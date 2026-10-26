@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pierre-Antoine Ruat · Droit &amp; outils juridiques</title>
-  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, et deux logiciels : Paraphe et AuditPro.">
+  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, et trois logiciels : Paraphe, AuditPro et Arbre Généalogique.">
   <!-- Aperçu du lien (LinkedIn, e-mail, messageries) -->
   <link rel="canonical" href="https://parpar30.github.io/portfolio/">
   <meta property="og:url" content="https://parpar30.github.io/portfolio/">
@@ -267,6 +267,31 @@
         <span class="tags"><span>tableaux de bord</span><span>powerpoint</span><span class="nda"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>confidentiel</span></span>
       </button>
     </article>
+
+    <!-- Arbre Généalogique -->
+    <article class="project" data-modal="m-arbre">
+      <div class="tiles" aria-hidden="true">
+        <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#2E5E47">
+          <img src="assets/img/arbre-symbole-blanc.svg" alt="" class="tile-mark">
+          <span class="grid-lines"></span>
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#F4F4EF">
+          <img src="assets/img/arbre-01-arbre.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <div class="tiles reverse" aria-hidden="true">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#E3ECE6">
+          <img src="assets/img/arbre-03-carte.jpg" alt="" loading="lazy">
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#141614">
+          <img src="assets/img/arbre-05-eventail-nuit.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-arbre">
+        <span class="bar-title"><img src="assets/img/arbre-icone.svg" alt="" class="bar-icon"><span><b>Arbre Généalogique</b> : l'histoire d'une famille, de l'arbre à la carte <span class="bar-proof">· 35 000 communes de France reconnues</span></span></span>
+        <span class="tags"><span>logiciel</span><span>cartographie</span><span>gedcom</span></span>
+      </button>
+    </article>
   </section>
 
 </main>
@@ -337,6 +362,35 @@
   </div>
   <p class="note">Captures réalisées sur la version de démonstration, avec des données fictives.</p>
   <p class="tags"><span>analyse du besoin</span><span>développement</span><span>tableaux de bord</span><span>tests automatiques</span></p>
+</dialog>
+
+<dialog id="m-arbre" class="modal" aria-labelledby="m-arbre-title">
+  <button class="close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="modal-head">
+    <img src="assets/img/arbre-icone.svg" alt="" class="modal-icon">
+    <div><h2 id="m-arbre-title">Arbre Généalogique</h2><p class="motto">Construire et raconter l'histoire d'une famille · Projet personnel, 2026</p></div>
+  </div>
+  <p>Une application de bureau pour construire son arbre généalogique, puis le parcourir autrement : par branche, par génération, en éventail ou sur une carte. Plusieurs familles peuvent coexister, chacune dans son profil. Tout reste sur l'ordinateur : pas de compte, pas de serveur.</p>
+  <div class="cols">
+    <div><h3>Construire</h3><ul><li>Fiches détaillées : état civil, domiciles, métiers, unions, pièces jointes</li><li>Ajout d'un parent, d'un enfant ou d'un conjoint depuis l'arbre</li><li>Import et export GEDCOM, sauvegarde, image PNG, SVG ou PDF</li><li>Chaque modification s'annule, au clavier comme à la souris</li></ul></div>
+    <div><h3>Explorer</h3><ul><li>Arbre coloré par branche, repliable, avec un radar d'ensemble</li><li><b>Carte des lieux</b> : arcs de vie, domiciles, déplacement de la famille au fil du siècle</li><li>Éventail des ancêtres et numérotation Sosa</li><li>Tableau filtrable, export CSV et calcul du lien de parenté</li></ul></div>
+  </div>
+  <dl class="facts">
+    <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, design, code et tests.</dd></div>
+    <div><dt>Technologies</dt><dd>HTML, CSS et JavaScript sans framework · application de bureau Tauri 2 · format GEDCOM · tests automatiques dans le navigateur</dd></div>
+  </dl>
+  <div class="proof">
+    <h3>Des lieux reconnus, sans connexion</h3>
+    <p>La carte place chaque naissance, domicile et décès à partir de données embarquées : près de 35 000 communes de France (API Géo de l'État) et plus de 45 000 localités de Suisse, des pays voisins et des États-Unis (GeoNames). L'application a ensuite traversé deux audits complets, dont une revue d'accessibilité WCAG 2.1 AA.</p>
+  </div>
+  <div class="gallery">
+    <img src="assets/img/arbre-01-arbre.jpg" alt="L'arbre, coloré par branche" loading="lazy">
+    <img src="assets/img/arbre-02-fiche.jpg" alt="Le détail d'une personne" loading="lazy">
+    <img src="assets/img/arbre-03-carte.jpg" alt="La carte des lieux de la famille" loading="lazy">
+    <img src="assets/img/arbre-04-tableau.jpg" alt="Le tableau de toutes les personnes" loading="lazy">
+  </div>
+  <p class="note">Captures réalisées avec la famille d'exemple fournie dans l'application, aux données fictives.</p>
+  <p class="tags"><span>conception</span><span>développement</span><span>cartographie</span><span>accessibilité</span></p>
 </dialog>
 
 <script src="script.js?v=7"></script>
