@@ -86,6 +86,7 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .nav-link{font-size:15px;color:var(--muted);transition:color .3s;padding:10px 0}
 .nav-link:hover,.nav-link.active{color:var(--text)}
 .cta{
+  display:inline-flex;align-items:center;gap:8px;
   background:var(--accent-strong);color:#fff;
   padding:14px 22px;border-radius:99px;font-size:14px;font-weight:500;white-space:nowrap;
   box-shadow:0 6px 16px -8px rgba(0,0,0,.35);
@@ -100,7 +101,9 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 }
 .avatar{width:58px;height:58px;border-radius:16px;overflow:hidden;background:var(--soft)}
 .avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
-.intro{font-size:clamp(20px,2vw,24px);font-weight:400;line-height:1.35;letter-spacing:-.01em;margin:22px 0 28px;max-width:480px;text-wrap:pretty}
+.hero-name{font-size:clamp(38px,5vw,60px);font-weight:600;line-height:1.02;letter-spacing:-.035em;margin:22px 0 18px;opacity:0;animation:rise .9s var(--ease) .15s forwards}
+.hero-role{display:block;font-size:clamp(16px,1.6vw,19px);font-weight:500;letter-spacing:-.005em;color:var(--accent);margin-top:12px}
+.intro{font-size:clamp(18px,1.8vw,21px);font-weight:400;line-height:1.4;letter-spacing:-.01em;margin:0 0 26px;max-width:470px;text-wrap:pretty}
 .intro .w{display:inline-block;opacity:0;transform:translateY(12px);filter:blur(4px);animation:word .8s var(--ease) forwards}
 .bubble{width:20px;height:20px;fill:#9fb3d9;vertical-align:-2px;margin-right:6px}
 .logos{display:flex;gap:clamp(18px,3vw,38px);list-style:none;align-items:center;flex-wrap:wrap;margin-top:40px}
@@ -193,6 +196,9 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 }
 .bar:hover{background:color-mix(in srgb,var(--bar) 88%,var(--accent))}
 .bar-title{display:flex;align-items:center;gap:10px;font-size:clamp(14px,1.5vw,17px);min-width:0}
+.bar-title b{font-weight:600}
+.bar-proof{color:var(--accent);font-weight:500}
+.project .tiles + .tiles{margin-top:24px}
 .bar-icon{width:22px;height:22px;border-radius:6px;flex:none}
 .bar-icon.ap,.modal-icon.ap{display:grid;place-items:center;background:#13285E;color:#ff8a3d;font-weight:700;font-size:13px}
 .tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
@@ -281,8 +287,8 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .cta:active,.pill-link:active{transform:scale(.97);transition-duration:.15s}
 @media (hover:hover) and (pointer:fine){
   .cta:hover .btn__txt > span,.pill-link:hover .btn__txt > span{transform:translateY(-100%)}
-  .pill-link:hover .btn__ico .arrow:first-child{transform:translate(120%,-120%)}
-  .pill-link:hover .btn__ico .arrow + .arrow{transform:none}
+  .pill-link:hover .btn__ico .arrow:first-child,.cta:hover .btn__ico .arrow:first-child{transform:translate(120%,-120%)}
+  .pill-link:hover .btn__ico .arrow + .arrow,.cta:hover .btn__ico .arrow + .arrow{transform:none}
 }
 .copy{font-size:13px;color:var(--muted);margin-top:14px}
 
@@ -324,8 +330,8 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .modal .tags{justify-content:flex-start;margin-bottom:20px}
 
 /* ---------- Mouvement ---------- */
-.reveal{opacity:0;transform:translateY(40px) scale(.98);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
-.reveal.in{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(40px) scale(.98);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
 .reveal-pop{animation:pop .9s var(--ease) both .1s}
 @keyframes drop{from{opacity:0;transform:translateY(-20px)}}
 @keyframes pop{from{opacity:0;transform:scale(.6) rotate(-8deg)}}
@@ -338,8 +344,8 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 /* Mouvement réduit : les éléments apparaissent en fondu, sans déplacement */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{transform:none;transition:opacity .4s linear}
-  .intro .w,.logos li,.top,.reveal-pop{animation:none;opacity:1;transform:none;filter:none}
+  .js .reveal{transform:none;transition:opacity .4s linear}
+  .intro .w,.logos li,.top,.reveal-pop,.hero-name{animation:none;opacity:1;transform:none;filter:none}
   .hero-screen{animation:none}
   .goal,.hero-actions{animation:none;opacity:1}
   .tile-shot img,.xp-logo,.hero-card{transition:none;transform:none}
@@ -351,6 +357,7 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;min-height:0;padding-bottom:60px}
   .tiles,.tiles.reverse{grid-template-columns:1fr 1fr;gap:14px}
+  .project .tiles + .tiles{margin-top:14px}
   .tile{height:clamp(160px,34vw,260px)}
   .bar{border-radius:26px;flex-direction:column;align-items:flex-start}
   .bar:focus-visible{border-radius:26px}
@@ -359,9 +366,12 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
   .cols{grid-template-columns:1fr}
 }
 @media (max-width:640px){
-  .top{display:flex;gap:8px;padding-block:10px}
-  .badge,.nav-link,.hello-pre{display:none}
-  .top-left{flex:1}
+  .top{display:flex;gap:4px;padding-block:10px;justify-content:space-between}
+  .top-left{display:none}
+  .top-right{gap:14px}
+  .project .tiles + .tiles{margin-top:14px}
+  .modal-head{align-items:flex-start}
+  .modal-icon{width:48px;height:48px;border-radius:14px}
   .hello{font-size:14px;overflow:hidden;text-overflow:ellipsis}
   .cta{padding:11px 16px}
   .tiles,.tiles.reverse{grid-template-columns:1fr}
@@ -384,3 +394,12 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .back:hover svg{transform:translateX(-3px)}
 .copy a{text-decoration:underline;text-underline-offset:3px}
 .copy a:hover{color:var(--text)}
+
+/* ---------- Accès et confort ---------- */
+.skip{position:absolute;left:16px;top:-60px;z-index:100;background:var(--accent-strong);color:#fff;padding:10px 16px;border-radius:12px;transition:top .2s}
+.skip:focus{top:12px}
+.site-footer{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
+html:has(dialog[open]){overflow:hidden}
+/* en mode sombre, les cases blanches des logos sont adoucies */
+:root[data-theme="dark"] .xp-logo[style*="#fff"]{background:#dcdce3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .xp-logo[style*="#fff"]{background:#dcdce3}}

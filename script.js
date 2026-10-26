@@ -8,14 +8,24 @@ document.getElementById('theme').addEventListener('click', () => {
     : matchMedia('(prefers-color-scheme: dark)').matches;
   root.dataset.theme = dark ? 'light' : 'dark';
   try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+  syncThemeButton();
 });
+function syncThemeButton() {
+  const dark = root.dataset.theme
+    ? root.dataset.theme === 'dark'
+    : matchMedia('(prefers-color-scheme: dark)').matches;
+  document.getElementById('theme').setAttribute('aria-pressed', String(dark));
+}
+syncThemeButton();
 
 // Buttons: the label flips on hover (same effect as the Paraphe site). The text moves into
 // .btn__txt, which carries a copy of itself as a text-shadow one line below; the arrow gets a twin.
 document.querySelectorAll('.cta, .pill-link').forEach((b) => {
   const arrow = b.querySelector(':scope > .arrow');
   const file = b.querySelector(':scope > .file');
-  const content = [...b.childNodes].filter((n) => n !== arrow && n !== file && !(n.nodeType === 3 && !n.textContent.trim()));
+  const content = [...b.childNodes].filter((n) => n !== arrow && n !== file
+    && !(n.classList && n.classList.contains('sr-only'))
+    && !(n.nodeType === 3 && !n.textContent.trim()));
   const txt = document.createElement('span');
   const inner = document.createElement('span');
   txt.className = 'btn__txt';
@@ -44,18 +54,23 @@ video.addEventListener('pause', syncVideoToggle);
 if (!reduce) video.play().catch(syncVideoToggle);
 syncVideoToggle();
 
-// Hero sentence: reveal word by word
+// Hero sentence: reveal word by word. Screen readers get the sentence in one piece.
 const intro = document.querySelector('.intro');
 const bubble = intro.querySelector('.bubble');
-const words = intro.textContent.trim().split(/\s+/);
+const sentence = intro.textContent.trim();
+const spoken = document.createElement('span');
+spoken.className = 'sr-only';
+spoken.textContent = sentence;
+const shown = document.createElement('span');
+shown.setAttribute('aria-hidden', 'true');
 intro.textContent = '';
-intro.append(bubble);
-words.forEach((w, i) => {
+intro.append(bubble, spoken, shown);
+sentence.split(/\s+/).forEach((w, i) => {
   const s = document.createElement('span');
   s.className = 'w';
   s.textContent = w;
   s.style.animationDelay = `${0.25 + i * 0.035}s`;
-  intro.append(s, ' ');
+  shown.append(s, ' ');
 });
 document.querySelectorAll('.logos li').forEach((li, i) => {
   li.style.animationDelay = `${0.9 + i * 0.08}s`;
