@@ -1,0 +1,16 @@
+{
+  "name": "Pierre-Antoine Ruat · Droit & outils juridiques",
+  "short_name": "P-A Ruat",
+  "description": "Parcours, projets et CV de Pierre-Antoine Ruat, étudiant en L3 de droit à Paris Nanterre.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
