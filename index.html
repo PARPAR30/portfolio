@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pierre-Antoine Ruat · Droit &amp; outils juridiques</title>
-  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, et trois logiciels : Paraphe, AuditPro et Arbre Généalogique.">
+  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, des outils numériques pour les juristes et les auditeurs, et des logiciels plus personnels : Paraphe, AuditPro, Arbre Généalogique et Vigie.">
   <!-- Aperçu du lien (LinkedIn, e-mail, messageries) -->
   <link rel="canonical" href="https://parpar30.github.io/portfolio/">
   <meta property="og:url" content="https://parpar30.github.io/portfolio/">
@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
   <script>document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
@@ -56,7 +56,7 @@
       <h1 class="hero-name">Pierre-Antoine Ruat<span class="sr-only">, </span><span class="hero-role">Étudiant en L3 de droit · Paris Nanterre</span></h1>
       <p class="intro">
         <svg class="bubble" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>
-        Juriste stagiaire chez Saint-Gobain Distribution Bâtiment France en 2026. Je conçois aussi des outils numériques pour les juristes et les auditeurs.
+        Juriste stagiaire chez Saint-Gobain Distribution Bâtiment France en 2026. Je conçois aussi des outils numériques pour les juristes et les auditeurs, et, en parallèle, des logiciels plus personnels, nés d'une curiosité ou d'un besoin du quotidien.
       </p>
       <p class="goal"><span class="goal-dot" aria-hidden="true"></span><span>Je candidate en <strong>M1 droit des affaires</strong> pour la rentrée 2027.</span></p>
       <div class="hero-actions">
@@ -209,7 +209,7 @@
     <!-- Compétences -->
     <div class="skills reveal">
       <div class="skill"><h3>Langues</h3><p><b>Anglais</b> C1 · <b>Allemand</b> B2</p></div>
-      <div class="skill"><h3>Outils</h3><p>Pack Office, macOS, OneTrust · HTML, CSS, JavaScript et Tauri pour mes propres logiciels</p></div>
+      <div class="skill"><h3>Outils</h3><p>Pack Office, macOS, OneTrust · HTML, CSS, JavaScript, Tauri et Swift pour mes propres logiciels</p></div>
       <div class="skill"><h3>À côté</h3><p><b>Judo</b> depuis 15 ans (Kogakukan Club), course à pied, sensibilisation à la sclérose en plaques</p></div>
     </div>
   </section>
@@ -239,7 +239,7 @@
       </div>
       <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-paraphe">
         <span class="bar-title"><img src="assets/img/paraphe-icone.png" alt="" class="bar-icon"><span><b>Paraphe</b> : six outils juridiques, de la fac au cabinet <span class="bar-proof">· 602 délais de procédure vérifiés dans leur article</span></span></span>
-        <span class="tags"><span>logiciel</span><span>mac &amp; windows</span><span>délais de procédure</span></span>
+        <span class="tags"><span>logiciel</span><span>swift</span><span>délais de procédure</span></span>
       </button>
     </article>
 
@@ -292,6 +292,31 @@
         <span class="tags"><span>logiciel</span><span>cartographie</span><span>gedcom</span></span>
       </button>
     </article>
+
+    <!-- Vigie -->
+    <article class="project" data-modal="m-vigie">
+      <div class="tiles" aria-hidden="true">
+        <button class="tile tile-logo reveal" tabindex="-1" style="--bg:radial-gradient(circle at 50% 46%,rgba(31,99,255,.55),rgba(13,42,122,.28) 38%,transparent 70%) #05070D">
+          <img src="assets/img/vigie-orbe.png" alt="" class="tile-mark orb">
+          <span class="grid-lines"></span>
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#E6EEFC">
+          <img src="assets/img/vigie-01-apercu.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <div class="tiles reverse" aria-hidden="true">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#0E1220">
+          <img src="assets/img/vigie-02-cpu.jpg" alt="" loading="lazy">
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#E6EEFC">
+          <img src="assets/img/vigie-03-thermique.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-vigie">
+        <span class="bar-title"><img src="assets/img/vigie-icone.png" alt="" class="bar-icon"><span><b>Vigie</b> : un gestionnaire de tâches pour Mac <span class="bar-proof">· « Pourquoi mon Mac rame ? » en une phrase</span></span></span>
+        <span class="tags"><span>logiciel</span><span>macOS natif</span><span>swift</span></span>
+      </button>
+    </article>
   </section>
 
 </main>
@@ -317,14 +342,14 @@
     <img src="assets/img/paraphe-icone.png" alt="" class="modal-icon">
     <div><h2 id="m-paraphe-title">Paraphe</h2><p class="motto">« Du cours au cabinet. » · Projet personnel, 2026</p></div>
   </div>
-  <p>Une application de bureau pour Mac et Windows qui réunit six outils juridiques : trois pour étudier, trois pour pratiquer. Elle suit la même personne de la première année de licence jusqu'au cabinet. Tout reste sur l'ordinateur : pas de compte, pas de publicité, pas de traceur.</p>
+  <p>Une application native pour Mac, désormais entièrement écrite en Swift, qui réunit six outils juridiques : trois pour étudier, trois pour pratiquer. Elle suit la même personne de la première année de licence jusqu'au cabinet. Tout reste sur l'ordinateur : pas de compte, pas de publicité, pas de traceur.</p>
   <div class="cols">
     <div><h3>Étudier</h3><ul><li>Fiches mémo avec répétition espacée</li><li>Fiches d'arrêt, de la L1 au M2</li><li>Codes &amp; articles, texte officiel daté</li></ul></div>
     <div><h3>Pratiquer</h3><ul><li><b>Diligences</b> : sociétés, contrats, litiges, temps et honoraires</li><li><b>Considérant</b> : un raisonnement juridique en cartes</li><li><b>Quantième</b> : 168 procédures et 602 étapes de délais</li></ul></div>
   </div>
   <dl class="facts">
     <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, contenu juridique, design, code et tests.</dd></div>
-    <div><dt>Technologies</dt><dd>HTML, CSS et JavaScript sans framework · application de bureau Tauri 2 pour Mac et Windows</dd></div>
+    <div><dt>Technologies</dt><dd>Swift et SwiftUI : chaque outil est un écran natif du Mac · index des codes en SQLite · d'abord écrite en HTML, CSS et JavaScript dans une coque Tauri 2, puis réécrite en Swift</dd></div>
   </dl>
   <div class="proof">
     <h3>Des délais vérifiés, un par un</h3>
@@ -391,6 +416,35 @@
   </div>
   <p class="note">Captures réalisées avec la famille d'exemple fournie dans l'application, aux données fictives.</p>
   <p class="tags"><span>conception</span><span>développement</span><span>cartographie</span><span>accessibilité</span></p>
+</dialog>
+
+<dialog id="m-vigie" class="modal" aria-labelledby="m-vigie-title">
+  <button class="close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="modal-head">
+    <img src="assets/img/vigie-icone.png" alt="" class="modal-icon">
+    <div><h2 id="m-vigie-title">Vigie</h2><p class="motto">Garder un œil sur son Mac · Projet personnel, 2026</p></div>
+  </div>
+  <p>Un gestionnaire de tâches natif pour Mac, né d'un besoin simple : savoir en quelques secondes quelle application ralentit l'ordinateur, sans payer un logiciel du commerce. Vigie suit en direct le processeur, la mémoire, le disque, le réseau, la puce graphique, la température et la batterie, et garde un œil sur le Mac même fenêtre fermée. Tout reste sur l'ordinateur : rien n'est envoyé sur Internet.</p>
+  <div class="cols">
+    <div><h3>Surveiller</h3><ul><li>Un aperçu qui se lit de haut en bas : une phrase d'état, quatre chiffres, un graphique</li><li>Les applications regroupées, avec leur processeur, leur mémoire et leur énergie</li><li>Températures de la puce et ralentissement dû à la chaleur</li><li>Une orbe dans la barre des menus et des widgets de bureau</li></ul></div>
+    <div><h3>Comprendre</h3><ul><li><b>Pourquoi mon Mac rame ?</b> : un diagnostic en une phrase, et quoi faire</li><li>Historique sur 30 jours, une mesure par minute</li><li>Alertes et notifications réglables</li><li>Moments sauvegardés, pour comparer plus tard</li></ul></div>
+  </div>
+  <dl class="facts">
+    <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, direction visuelle, icône, code et tests.</dd></div>
+    <div><dt>Technologies</dt><dd>Swift et SwiftUI, application native macOS · widgets WidgetKit · historique SQLite · lecture des capteurs de la puce</dd></div>
+  </dl>
+  <div class="proof">
+    <h3>Une réponse avant des chiffres</h3>
+    <p>Le diagnostic croise la saturation du processeur et de la mémoire, la chaleur, le disque, la puce graphique et la batterie pour désigner un responsable, puis regarde l'historique de la semaine pour dire si le problème est récurrent. Les couleurs des graphiques ont été vérifiées pour le daltonisme et le contraste, en clair comme en sombre.</p>
+  </div>
+  <div class="gallery">
+    <img src="assets/img/vigie-01-apercu.jpg" alt="L'aperçu : état du Mac, chiffres clés et apps les plus actives" loading="lazy">
+    <img src="assets/img/vigie-02-cpu.jpg" alt="Le processeur, cœur par cœur" loading="lazy">
+    <img src="assets/img/vigie-03-thermique.jpg" alt="Les températures et les apps qui font chauffer le Mac" loading="lazy">
+    <img src="assets/img/vigie-04-historique.jpg" alt="L'historique des mesures" loading="lazy">
+  </div>
+  <p class="note">Captures réalisées sur mon Mac, avec des mesures réelles.</p>
+  <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
 </dialog>
 
 <script src="script.js?v=7"></script>

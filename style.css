@@ -175,6 +175,7 @@ main{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .tiles.reverse .tile-shot img{left:9%;top:14%;width:120%}
 .tile-shot:hover img{transform:translate(-3%,calc(-4% + var(--drift,0px))) scale(1.03)}
 .tile-logo .tile-mark{width:34%;max-width:110px;transition:transform 1s var(--ease)}
+.tile-logo .tile-mark.orb{width:56%;max-width:190px;position:relative;z-index:1}
 .tile-logo:hover .tile-mark,.tile-logo:hover .wordmark{transform:scale(1.08) rotate(-3deg)}
 .wordmark{color:#fff;font-weight:600;font-size:clamp(28px,3.4vw,42px);letter-spacing:-.02em;transition:transform 1s var(--ease)}
 .wordmark b{font-weight:700;color:#ff8a3d}
