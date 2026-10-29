@@ -271,25 +271,25 @@
     <!-- Arbre Généalogique -->
     <article class="project" data-modal="m-arbre">
       <div class="tiles" aria-hidden="true">
-        <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#2E5E47">
+        <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#111111">
           <img src="assets/img/arbre-symbole-blanc.svg" alt="" class="tile-mark">
           <span class="grid-lines"></span>
         </button>
-        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#F4F4EF">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#F1F1EF">
           <img src="assets/img/arbre-01-arbre.jpg" alt="" loading="lazy">
         </button>
       </div>
       <div class="tiles reverse" aria-hidden="true">
-        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#E3ECE6">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#E9ECE6">
           <img src="assets/img/arbre-03-carte.jpg" alt="" loading="lazy">
         </button>
-        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#141614">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#141414">
           <img src="assets/img/arbre-05-eventail-nuit.jpg" alt="" loading="lazy">
         </button>
       </div>
       <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-arbre">
         <span class="bar-title"><img src="assets/img/arbre-icone.svg" alt="" class="bar-icon"><span><b>Arbre Généalogique</b> : l'histoire d'une famille, de l'arbre à la carte <span class="bar-proof">· 35 000 communes de France reconnues</span></span></span>
-        <span class="tags"><span>logiciel</span><span>cartographie</span><span>gedcom</span></span>
+        <span class="tags"><span>logiciel</span><span>swift</span><span>cartographie</span></span>
       </button>
     </article>
 
@@ -395,27 +395,27 @@
     <img src="assets/img/arbre-icone.svg" alt="" class="modal-icon">
     <div><h2 id="m-arbre-title">Arbre Généalogique</h2><p class="motto">Construire et raconter l'histoire d'une famille · Projet personnel, 2026</p></div>
   </div>
-  <p>Une application de bureau pour construire son arbre généalogique, puis le parcourir autrement : par branche, par génération, en éventail ou sur une carte. Plusieurs familles peuvent coexister, chacune dans son profil. Tout reste sur l'ordinateur : pas de compte, pas de serveur.</p>
+  <p>Une application native pour Mac, désormais entièrement écrite en Swift, pour construire son arbre généalogique puis le parcourir autrement : par branche, par génération, en éventail, sur une frise ou sur une carte. Chaque famille est un fichier, enregistré automatiquement. Tout reste sur l'ordinateur : pas de compte, pas de serveur.</p>
   <div class="cols">
-    <div><h3>Construire</h3><ul><li>Fiches détaillées : état civil, domiciles, métiers, unions, pièces jointes</li><li>Ajout d'un parent, d'un enfant ou d'un conjoint depuis l'arbre</li><li>Import et export GEDCOM, sauvegarde, image PNG, SVG ou PDF</li><li>Chaque modification s'annule, au clavier comme à la souris</li></ul></div>
-    <div><h3>Explorer</h3><ul><li>Arbre coloré par branche, repliable, avec un radar d'ensemble</li><li><b>Carte des lieux</b> : arcs de vie, domiciles, déplacement de la famille au fil du siècle</li><li>Éventail des ancêtres et numérotation Sosa</li><li>Tableau filtrable, export CSV et calcul du lien de parenté</li></ul></div>
+    <div><h3>Construire</h3><ul><li>Fiche en pleine page : chronologie sourcée, unions, médias, pistes de recherche</li><li>Ajout rapide depuis l'arbre, ou assistant en quatre étapes</li><li><b>Tableau</b> modifiable comme un tableur, copier-coller avec Excel</li><li>Import GEDCOM vérifié, export et impression en PNG, SVG ou PDF</li></ul></div>
+    <div><h3>Explorer</h3><ul><li>Arbre coloré par branche, repliable, avec le fil d'une lignée</li><li><b>Carte des lieux</b> : migrations cliquables, cœur de la famille au fil du siècle</li><li>Éventail des ancêtres, liste Sosa et frise avec repères historiques</li><li>Contrôle de cohérence, ancêtres manquants et lien de parenté expliqué</li></ul></div>
   </div>
   <dl class="facts">
     <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, design, code et tests.</dd></div>
-    <div><dt>Technologies</dt><dd>HTML, CSS et JavaScript sans framework · application de bureau Tauri 2 · format GEDCOM · tests automatiques dans le navigateur</dd></div>
+    <div><dt>Technologies</dt><dd>Swift, SwiftUI et AppKit, application native macOS · arbre dessiné en Core Graphics · carte MapKit · GEDCOM 5.5.1 · tests automatiques · d'abord écrite en HTML, CSS et JavaScript dans une coque Tauri 2, puis réécrite en Swift</dd></div>
   </dl>
   <div class="proof">
     <h3>Des lieux reconnus, sans connexion</h3>
-    <p>La carte place chaque naissance, domicile et décès à partir de données embarquées : près de 35 000 communes de France (API Géo de l'État) et plus de 45 000 localités de Suisse, des pays voisins et des États-Unis (GeoNames). L'application a ensuite traversé deux audits complets, dont une revue d'accessibilité WCAG 2.1 AA.</p>
+    <p>La carte place chaque naissance, domicile et décès à partir de données embarquées : près de 35 000 communes de France (API Géo de l'État) et plus de 45 000 localités de Suisse, des pays voisins et des États-Unis (GeoNames). La réécriture en Swift garde le même fichier et la même mise en page de l'arbre, vérifiée position par position contre la première version, et a été éprouvée sur un arbre de 8 000 personnes.</p>
   </div>
   <div class="gallery">
     <img src="assets/img/arbre-01-arbre.jpg" alt="L'arbre, coloré par branche" loading="lazy">
-    <img src="assets/img/arbre-02-fiche.jpg" alt="Le détail d'une personne" loading="lazy">
-    <img src="assets/img/arbre-03-carte.jpg" alt="La carte des lieux de la famille" loading="lazy">
-    <img src="assets/img/arbre-04-tableau.jpg" alt="Le tableau de toutes les personnes" loading="lazy">
+    <img src="assets/img/arbre-02-fiche.jpg" alt="La fiche d'une personne, en pleine page" loading="lazy">
+    <img src="assets/img/arbre-03-carte.jpg" alt="Les migrations de la famille sur la carte" loading="lazy">
+    <img src="assets/img/arbre-04-tableau.jpg" alt="Le tableau, modifiable comme un tableur" loading="lazy">
   </div>
   <p class="note">Captures réalisées avec la famille d'exemple fournie dans l'application, aux données fictives.</p>
-  <p class="tags"><span>conception</span><span>développement</span><span>cartographie</span><span>accessibilité</span></p>
+  <p class="tags"><span>conception</span><span>développement</span><span>cartographie</span><span>design natif</span></p>
 </dialog>
 
 <dialog id="m-vigie" class="modal" aria-labelledby="m-vigie-title">
