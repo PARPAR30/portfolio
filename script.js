@@ -152,3 +152,80 @@ document.querySelectorAll('.modal').forEach((d) => {
     if (outside) d.close();
   });
 });
+
+// Screenshot viewer: gallery images in the project windows open full screen,
+// with previous / next (buttons, arrow keys, swipe) and the image's alt text as caption
+const viewer = document.createElement('dialog');
+viewer.className = 'viewer';
+viewer.setAttribute('aria-label', 'Capture en grand');
+viewer.innerHTML = `
+  <div class="viewer-top">
+    <span class="viewer-count" aria-live="polite"></span>
+    <button class="viewer-close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="viewer-stage">
+    <button class="prev" aria-label="Capture précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img alt="">
+    <button class="next" aria-label="Capture suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <p class="viewer-caption"></p>`;
+document.body.append(viewer);
+const viewerImg = viewer.querySelector('img');
+let viewerList = [];
+let viewerIndex = 0;
+let viewerOpener = null;
+
+function showShot(i, animate) {
+  viewerIndex = (i + viewerList.length) % viewerList.length;
+  const img = viewerList[viewerIndex];
+  viewerImg.src = img.currentSrc || img.src;
+  viewerImg.alt = img.alt;
+  viewer.querySelector('.viewer-caption').textContent = img.alt;
+  viewer.querySelector('.viewer-count').textContent = `${viewerIndex + 1} / ${viewerList.length}`;
+  if (animate && !reduce) {
+    viewerImg.classList.remove('swap');
+    void viewerImg.offsetWidth;
+    viewerImg.classList.add('swap');
+  }
+}
+
+document.querySelectorAll('.modal .gallery').forEach((gallery) => {
+  const imgs = [...gallery.querySelectorAll('img')];
+  imgs.forEach((img, i) => {
+    const shot = document.createElement('button');
+    shot.className = 'shot';
+    shot.setAttribute('aria-label', `Agrandir la capture : ${img.alt}`);
+    img.replaceWith(shot);
+    shot.append(img);
+    shot.addEventListener('click', () => {
+      viewerList = imgs;
+      viewerOpener = shot;
+      viewer.classList.toggle('single', imgs.length < 2);
+      showShot(i, false);
+      viewer.showModal();
+      viewer.querySelector('.viewer-close').focus();
+    });
+  });
+});
+
+viewer.querySelector('.prev').addEventListener('click', () => showShot(viewerIndex - 1, true));
+viewer.querySelector('.next').addEventListener('click', () => showShot(viewerIndex + 1, true));
+viewer.querySelector('.viewer-close').addEventListener('click', () => viewer.close());
+viewer.addEventListener('close', () => { if (viewerOpener) viewerOpener.focus(); });
+viewer.addEventListener('keydown', (ev) => {
+  if (ev.key === 'ArrowLeft') showShot(viewerIndex - 1, true);
+  if (ev.key === 'ArrowRight') showShot(viewerIndex + 1, true);
+});
+// A click on the dark background (not on the image or a button) closes the viewer
+viewer.addEventListener('click', (ev) => {
+  if (ev.target === viewer || ev.target.classList.contains('viewer-stage') || ev.target.classList.contains('viewer-top')) viewer.close();
+});
+// Swipe left or right on touch screens
+let swipeX = null;
+viewer.querySelector('.viewer-stage').addEventListener('pointerdown', (ev) => { if (ev.pointerType !== 'mouse') swipeX = ev.clientX; });
+viewer.querySelector('.viewer-stage').addEventListener('pointerup', (ev) => {
+  if (swipeX === null || viewerList.length < 2) return;
+  const dx = ev.clientX - swipeX;
+  swipeX = null;
+  if (Math.abs(dx) > 50) showShot(viewerIndex + (dx < 0 ? 1 : -1), true);
+});
