@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=15">
   <script>document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
@@ -218,8 +218,16 @@
   <section id="projets" class="section">
     <h2 class="section-title reveal">Projets</h2>
 
+    <ul class="apps reveal" aria-label="Aller à un projet">
+      <li><a href="#p-paraphe"><img src="assets/img/paraphe-icone.png" alt="" class="app-icon"><span><b>Paraphe</b><small>Outils juridiques</small></span></a></li>
+      <li><a href="#p-audit"><span class="app-icon ap" aria-hidden="true">A</span><span><b>AuditPro</b><small>Audit interne</small></span></a></li>
+      <li><a href="#p-arbre"><img src="assets/img/arbre-icone.svg" alt="" class="app-icon"><span><b>Arbre Généalogique</b><small>Histoire d'une famille</small></span></a></li>
+      <li><a href="#p-vigie"><img src="assets/img/vigie-icone.png" alt="" class="app-icon"><span><b>Vigie</b><small>Santé du Mac</small></span></a></li>
+      <li><a href="#p-etabli"><img src="assets/img/etabli-icone.svg" alt="" class="app-icon"><span><b>Établi</b><small>Conversion de fichiers</small></span></a></li>
+    </ul>
+
     <!-- Paraphe -->
-    <article class="project" data-modal="m-paraphe">
+    <article class="project" id="p-paraphe" data-modal="m-paraphe">
       <div class="tiles" aria-hidden="true">
         <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#5034DC">
           <img src="assets/img/paraphe-symbole-blanc.svg" alt="" class="tile-mark">
@@ -244,7 +252,7 @@
     </article>
 
     <!-- AuditPro -->
-    <article class="project" data-modal="m-audit">
+    <article class="project" id="p-audit" data-modal="m-audit">
       <div class="tiles" aria-hidden="true">
         <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#13285E">
           <span class="wordmark">Audit<b>Pro</b></span>
@@ -269,7 +277,7 @@
     </article>
 
     <!-- Arbre Généalogique -->
-    <article class="project" data-modal="m-arbre">
+    <article class="project" id="p-arbre" data-modal="m-arbre">
       <div class="tiles" aria-hidden="true">
         <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#111111">
           <img src="assets/img/arbre-symbole-blanc.svg" alt="" class="tile-mark">
@@ -294,7 +302,7 @@
     </article>
 
     <!-- Vigie -->
-    <article class="project" data-modal="m-vigie">
+    <article class="project" id="p-vigie" data-modal="m-vigie">
       <div class="tiles" aria-hidden="true">
         <button class="tile tile-logo reveal" tabindex="-1" style="--bg:radial-gradient(circle at 50% 46%,rgba(31,99,255,.55),rgba(13,42,122,.28) 38%,transparent 70%) #05070D">
           <img src="assets/img/vigie-orbe.png" alt="" class="tile-mark orb">
@@ -319,7 +327,7 @@
     </article>
 
     <!-- Établi -->
-    <article class="project" data-modal="m-etabli">
+    <article class="project" id="p-etabli" data-modal="m-etabli">
       <div class="tiles" aria-hidden="true">
         <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#0A0A0A">
           <img src="assets/img/etabli-symbole-blanc.svg" alt="" class="tile-mark">
@@ -381,10 +389,14 @@
     <p>Chaque délai de Quantième renvoie à son article. Tout le référentiel a été comparé au texte consolidé des codes, avec le droit arrêté au 13 octobre 2026 : 69 corrections en sont sorties (délai, unité, article ou point de départ). Paraphe reste un outil d'organisation : il ne donne pas de conseil juridique, et chaque délai se vérifie dans le texte.</p>
   </div>
   <div class="gallery">
-    <img src="assets/img/paraphe-03-diligences.jpg" alt="Diligences" loading="lazy">
-    <img src="assets/img/paraphe-04-fiches-arret.jpg" alt="Fiches d'arrêt" loading="lazy">
-    <img src="assets/img/paraphe-07-considerant.jpg" alt="Considérant" loading="lazy">
-    <img src="assets/img/paraphe-02-quantieme.jpg" alt="Quantième" loading="lazy">
+    <img src="assets/img/paraphe-01-accueil.jpg" alt="L'accueil : ce qui demande votre attention aujourd'hui, et les six outils" loading="lazy">
+    <img src="assets/img/paraphe-03-diligences.jpg" alt="Diligences : contrats, litiges et échéances d'un service juridique" loading="lazy">
+    <img src="assets/img/paraphe-04-fiches-arret.jpg" alt="Fiches d'arrêt : faits, procédure, problème de droit, solution et portée" loading="lazy">
+    <img src="assets/img/paraphe-07-considerant.jpg" alt="Considérant : un raisonnement juridique en arbre, une idée par cube" loading="lazy">
+    <img src="assets/img/paraphe-02-quantieme.jpg" alt="Quantième : les délais d'une procédure, calculés étape par étape" loading="lazy">
+    <img src="assets/img/paraphe-09-fiches-memo.jpg" alt="Fiches mémo : une carte en révision, avec la répétition espacée" loading="lazy">
+    <img src="assets/img/paraphe-10-codes.jpg" alt="Codes & articles : le texte officiel daté, avec ses notes" loading="lazy">
+    <img src="assets/img/paraphe-08-diligences-nuit.jpg" alt="Diligences, en mode nuit" loading="lazy">
   </div>
   <p class="tags"><span>conception</span><span>développement</span><span>identité visuelle</span><span>film</span></p>
   <a class="pill-link" href="https://paraphe-app.fr/" target="_blank" rel="noopener">Voir le site de Paraphe<span class="sr-only"> (nouvel onglet)</span> <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
@@ -409,6 +421,10 @@
     <img src="assets/img/audit-overview.jpg" alt="Vue d'ensemble" loading="lazy">
     <img src="assets/img/audit-carte.jpg" alt="Carte par région" loading="lazy">
     <img src="assets/img/audit-tendances.jpg" alt="Tendances" loading="lazy">
+    <img src="assets/img/audit-04-missions.jpg" alt="Le tableau des missions, de la planification à la publication" loading="lazy">
+    <img src="assets/img/audit-05-planning.jpg" alt="Le planning des équipes : charge, absences, visas et coût du plan" loading="lazy">
+    <img src="assets/img/audit-06-plans-action.jpg" alt="Les plans d'action ouverts, par origine, priorité et échéance" loading="lazy">
+    <img src="assets/img/audit-07-carte-assurance.jpg" alt="La carte d'assurance : qui couvre chaque risque, et les manques" loading="lazy">
   </div>
   <p class="note">Captures réalisées sur la version de démonstration, avec des données fictives.</p>
   <p class="tags"><span>analyse du besoin</span><span>développement</span><span>tableaux de bord</span><span>tests automatiques</span></p>
@@ -438,6 +454,10 @@
     <img src="assets/img/arbre-02-fiche.jpg" alt="La fiche d'une personne, en pleine page" loading="lazy">
     <img src="assets/img/arbre-03-carte.jpg" alt="Les migrations de la famille sur la carte" loading="lazy">
     <img src="assets/img/arbre-04-tableau.jpg" alt="Le tableau, modifiable comme un tableur" loading="lazy">
+    <img src="assets/img/arbre-06-eventail.jpg" alt="L'éventail des ancêtres et la liste Sosa" loading="lazy">
+    <img src="assets/img/arbre-07-frise.jpg" alt="La frise de la famille, avec les repères historiques" loading="lazy">
+    <img src="assets/img/arbre-08-statistiques.jpg" alt="Les statistiques : naissances, âges, lieux et complétude" loading="lazy">
+    <img src="assets/img/arbre-09-ancetres-manquants.jpg" alt="Les ancêtres manquants et les prochaines recherches" loading="lazy">
   </div>
   <p class="note">Captures réalisées avec la famille d'exemple fournie dans l'application, aux données fictives.</p>
   <p class="tags"><span>conception</span><span>développement</span><span>cartographie</span><span>design natif</span></p>
@@ -467,6 +487,10 @@
     <img src="assets/img/vigie-02-cpu.jpg" alt="Le processeur, cœur par cœur" loading="lazy">
     <img src="assets/img/vigie-03-thermique.jpg" alt="Les températures et les apps qui font chauffer le Mac" loading="lazy">
     <img src="assets/img/vigie-04-historique.jpg" alt="L'historique des mesures" loading="lazy">
+    <img src="assets/img/vigie-05-apercu-nuit.jpg" alt="L'aperçu en sombre, avec le diagnostic en une phrase" loading="lazy">
+    <img src="assets/img/vigie-06-memoire.jpg" alt="La mémoire : pression, swap et applications" loading="lazy">
+    <img src="assets/img/vigie-07-batterie.jpg" alt="La batterie : charge, santé et énergie consommée par app" loading="lazy">
+    <img src="assets/img/vigie-08-alertes.jpg" alt="Les alertes des 30 derniers jours" loading="lazy">
   </div>
   <p class="note">Captures réalisées sur mon Mac, avec des mesures réelles.</p>
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
@@ -496,6 +520,10 @@
     <img src="assets/img/etabli-02-compresser.jpg" alt="Un outil : la file des fichiers et ses options" loading="lazy">
     <img src="assets/img/etabli-03-recettes.jpg" alt="Une recette : trois outils enchaînés" loading="lazy">
     <img src="assets/img/etabli-04-video-nuit.jpg" alt="Convertir une vidéo, en mode sombre" loading="lazy">
+    <img src="assets/img/etabli-05-accueil.jpg" alt="L'accueil : les outils récents et les catégories" loading="lazy">
+    <img src="assets/img/etabli-06-pdf-word.jpg" alt="PDF → Word : chaque page reconstruite dans Word" loading="lazy">
+    <img src="assets/img/etabli-07-transcrire.jpg" alt="Transcrire un audio ou une vidéo, sur le Mac" loading="lazy">
+    <img src="assets/img/etabli-08-embellir.jpg" alt="Embellir une capture d'écran" loading="lazy">
   </div>
   <p class="note">Captures réalisées dans l'application, avec des fichiers d'exemple.</p>
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
