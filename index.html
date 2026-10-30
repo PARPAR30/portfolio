@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pierre-Antoine Ruat · Droit &amp; outils juridiques</title>
-  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, des outils numériques pour les juristes et les auditeurs, et des logiciels plus personnels : Paraphe, AuditPro, Arbre Généalogique et Vigie.">
+  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, des outils numériques pour les juristes et les auditeurs, et des logiciels plus personnels : Paraphe, AuditPro, Arbre Généalogique, Vigie et Établi.">
   <!-- Aperçu du lien (LinkedIn, e-mail, messageries) -->
   <link rel="canonical" href="https://parpar30.github.io/portfolio/">
   <meta property="og:url" content="https://parpar30.github.io/portfolio/">
@@ -317,6 +317,31 @@
         <span class="tags"><span>logiciel</span><span>macOS natif</span><span>swift</span></span>
       </button>
     </article>
+
+    <!-- Établi -->
+    <article class="project" data-modal="m-etabli">
+      <div class="tiles" aria-hidden="true">
+        <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#0A0A0A">
+          <img src="assets/img/etabli-symbole-blanc.svg" alt="" class="tile-mark">
+          <span class="grid-lines"></span>
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#F5F5F5">
+          <img src="assets/img/etabli-01-documents.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <div class="tiles reverse" aria-hidden="true">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#F5F5F5">
+          <img src="assets/img/etabli-03-recettes.jpg" alt="" loading="lazy">
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#0E0E0F">
+          <img src="assets/img/etabli-04-video-nuit.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-etabli">
+        <span class="bar-title"><img src="assets/img/etabli-icone.svg" alt="" class="bar-icon"><span><b>Établi</b> : convertir et transformer ses fichiers, sur le Mac <span class="bar-proof">· 72 outils, aucun fichier envoyé en ligne</span></span></span>
+        <span class="tags"><span>logiciel</span><span>swift</span><span>conversion de fichiers</span></span>
+      </button>
+    </article>
   </section>
 
 </main>
@@ -398,7 +423,7 @@
   <p>Une application native pour Mac, désormais entièrement écrite en Swift, pour construire son arbre généalogique puis le parcourir autrement : par branche, par génération, en éventail, sur une frise ou sur une carte. Chaque famille est un fichier, enregistré automatiquement. Tout reste sur l'ordinateur : pas de compte, pas de serveur.</p>
   <div class="cols">
     <div><h3>Construire</h3><ul><li>Fiche en pleine page : chronologie sourcée, unions, médias, pistes de recherche</li><li>Ajout rapide depuis l'arbre, ou assistant en quatre étapes</li><li><b>Tableau</b> modifiable comme un tableur, copier-coller avec Excel</li><li>Import GEDCOM vérifié, export et impression en PNG, SVG ou PDF</li></ul></div>
-    <div><h3>Explorer</h3><ul><li>Arbre coloré par branche, repliable, avec le fil d'une lignée</li><li><b>Carte des lieux</b> : migrations cliquables, cœur de la famille au fil du siècle</li><li>Éventail des ancêtres, liste Sosa et frise avec repères historiques</li><li>Contrôle de cohérence, ancêtres manquants et lien de parenté expliqué</li></ul></div>
+    <div><h3>Explorer</h3><ul><li>Arbre coloré par branche, repliable, avec le fil d'une lignée ; huit palettes, ou ses propres couleurs</li><li><b>Carte des lieux</b> : migrations cliquables, cœur de la famille au fil du siècle</li><li>Éventail des ancêtres, liste Sosa et frise avec repères historiques</li><li>Contrôle de cohérence, ancêtres manquants et lien de parenté expliqué</li></ul></div>
   </div>
   <dl class="facts">
     <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, design, code et tests.</dd></div>
@@ -444,6 +469,35 @@
     <img src="assets/img/vigie-04-historique.jpg" alt="L'historique des mesures" loading="lazy">
   </div>
   <p class="note">Captures réalisées sur mon Mac, avec des mesures réelles.</p>
+  <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
+</dialog>
+
+<dialog id="m-etabli" class="modal" aria-labelledby="m-etabli-title">
+  <button class="close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="modal-head">
+    <img src="assets/img/etabli-icone.svg" alt="" class="modal-icon">
+    <div><h2 id="m-etabli-title">Établi</h2><p class="motto">L'atelier des fichiers, sur le Mac · Projet personnel, 2026</p></div>
+  </div>
+  <p>Une application native pour Mac, écrite en Swift, qui réunit 72 outils pour convertir et transformer ses fichiers : vidéo, audio, images, documents, texte et voix, et quelques outils du Mac. Un outil, un écran, avec seulement les réglages dont il a besoin, pour un fichier comme pour un dossier de plusieurs centaines. Tout est traité sur l'ordinateur et les originaux ne sont jamais modifiés : chaque exécution écrit ses résultats dans son propre dossier daté.</p>
+  <div class="cols">
+    <div><h3>Transformer</h3><ul><li>Vidéo et audio : convertir, compresser, découper, fusionner, incruster des sous-titres</li><li>Images : convertir, compresser, détourer, flouter les visages</li><li>Documents : <b>PDF → Word</b>, fusionner, signer, rendre consultable, caviarder</li><li>Texte et voix : transcrire, traduire, résumer, sur l'appareil</li></ul></div>
+    <div><h3>Automatiser</h3><ul><li><b>Recettes</b> : plusieurs outils enchaînés sur les mêmes fichiers</li><li><b>Dossiers surveillés</b> : chaque nouveau fichier passe par un outil ou une recette</li><li>Essai sur le premier fichier, avec comparaison avant / après</li><li>Lanceur ⌃⌥Espace, clic droit dans le Finder, Raccourcis et Spotlight</li></ul></div>
+  </div>
+  <dl class="facts">
+    <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, direction visuelle, icône, code et tests.</dd></div>
+    <div><dt>Technologies</dt><dd>Swift 6 et SwiftUI, application native macOS · AVFoundation, PDFKit, Vision, Speech, Translation et Foundation Models · FFmpeg et yt-dlp intégrés pour les autres formats · App Intents · en français et en anglais · tests automatiques</dd></div>
+  </dl>
+  <div class="proof">
+    <h3>Un caviardage qui efface vraiment</h3>
+    <p>Un rectangle noir posé sur un PDF laisse souvent le texte copiable en dessous. Ici, les noms, adresses e-mail et numéros de téléphone sont repérés dans le texte ou tracés à la main, puis chaque page est aplatie en image et les métadonnées sont retirées : le texte masqué n'existe plus dans le fichier produit. Les contrastes de l'interface sont vérifiés par des tests, en clair comme en sombre.</p>
+  </div>
+  <div class="gallery">
+    <img src="assets/img/etabli-01-documents.jpg" alt="Les outils de la catégorie Documents" loading="lazy">
+    <img src="assets/img/etabli-02-compresser.jpg" alt="Un outil : la file des fichiers et ses options" loading="lazy">
+    <img src="assets/img/etabli-03-recettes.jpg" alt="Une recette : trois outils enchaînés" loading="lazy">
+    <img src="assets/img/etabli-04-video-nuit.jpg" alt="Convertir une vidéo, en mode sombre" loading="lazy">
+  </div>
+  <p class="note">Captures réalisées dans l'application, avec des fichiers d'exemple.</p>
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
 </dialog>
 
