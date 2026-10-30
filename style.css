@@ -403,6 +403,7 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 }
 .note{font-size:13px!important;color:var(--muted)}
 .modal .tags{justify-content:flex-start;margin-bottom:20px}
+.modal .pill-link + .note{margin:12px 0 0}
 
 /* ---------- Mouvement ---------- */
 .js .reveal{opacity:0;transform:translateY(40px) scale(.98);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
