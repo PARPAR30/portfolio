@@ -136,10 +136,31 @@ if (!reduce) {
   drift();
 }
 
-// Project modals
+// Sillage video: loads and plays only while on screen, so the page stays light.
+// Reduced motion leaves it on its poster, and a pause stays paused until the visitor resumes it.
+const film = document.querySelector('.film-screen video');
+const filmToggle = document.getElementById('film-toggle');
+let filmHeld = reduce;
+function syncFilmToggle() {
+  filmToggle.classList.toggle('paused', film.paused);
+  filmToggle.setAttribute('aria-label', film.paused ? 'Lire la vidéo de Sillage' : 'Mettre en pause la vidéo de Sillage');
+}
+filmToggle.addEventListener('click', () => {
+  filmHeld = !film.paused;
+  if (filmHeld) film.pause(); else film.play();
+});
+film.addEventListener('play', syncFilmToggle);
+film.addEventListener('pause', syncFilmToggle);
+new IntersectionObserver(([e]) => {
+  if (!e.isIntersecting) film.pause();
+  else if (!filmHeld) film.play().catch(syncFilmToggle);
+}, { threshold: 0.25 }).observe(film);
+syncFilmToggle();
+
+// Project modals (the pause button of a video is not a way in)
 document.querySelectorAll('.project').forEach((p) => {
   const dialog = document.getElementById(p.dataset.modal);
-  p.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
+  p.querySelectorAll('button:not(.video-toggle)').forEach((b) => b.addEventListener('click', () => {
     dialog.showModal();
     dialog.scrollTop = 0;
   }));

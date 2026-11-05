@@ -221,6 +221,7 @@
     <ul class="apps reveal" aria-label="Aller à un projet">
       <li><a href="#p-paraphe"><img src="assets/img/paraphe-icone.png" alt="" class="app-icon"><span><b>Paraphe</b><small>Outils juridiques</small></span></a></li>
       <li><a href="#p-audit"><span class="app-icon ap" aria-hidden="true">A</span><span><b>AuditPro</b><small>Audit interne</small></span></a></li>
+      <li><a href="#p-sillage"><img src="assets/img/sillage-icone.png" alt="" class="app-icon"><span><b>Sillage</b><small>Vie d'étudiant</small></span></a></li>
       <li><a href="#p-arbre"><img src="assets/img/arbre-icone.svg" alt="" class="app-icon"><span><b>Arbre Généalogique</b><small>Histoire d'une famille</small></span></a></li>
       <li><a href="#p-vigie"><img src="assets/img/vigie-icone.png" alt="" class="app-icon"><span><b>Vigie</b><small>Santé du Mac</small></span></a></li>
       <li><a href="#p-etabli"><img src="assets/img/etabli-icone.svg" alt="" class="app-icon"><span><b>Établi</b><small>Conversion de fichiers</small></span></a></li>
@@ -273,6 +274,35 @@
       <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-audit">
         <span class="bar-title"><span class="bar-icon ap" aria-hidden="true">A</span><span><b>AuditPro</b> : le pilotage d'une direction d'audit interne <span class="bar-proof">· des classeurs Excel à la présentation au board en un clic</span></span></span>
         <span class="tags"><span>tableaux de bord</span><span>powerpoint</span><span class="nda"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>confidentiel</span></span>
+      </button>
+    </article>
+
+    <!-- Sillage -->
+    <article class="project" id="p-sillage" data-modal="m-sillage">
+      <div class="tiles tiles-film">
+        <button class="tile tile-logo reveal" tabindex="-1" aria-hidden="true" style="--bg:linear-gradient(135deg,#2F5BD3,#1E3A8A)">
+          <img src="assets/img/sillage-symbole-blanc.svg" alt="" class="tile-mark">
+          <span class="grid-lines"></span>
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" aria-hidden="true" style="--bg:#EEF0F3">
+          <img src="assets/img/sillage-tuile.jpg" alt="" loading="lazy">
+        </button>
+        <div class="film-card reveal">
+          <button class="film-open" tabindex="-1" aria-hidden="true">
+            <span class="film-screen">
+              <video src="assets/img/sillage-boucle.mp4" poster="assets/img/sillage-boucle-affiche.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+            </span>
+          </button>
+          <span class="film-note">Données d'exemple</span>
+          <button class="video-toggle" id="film-toggle" aria-label="Mettre en pause la vidéo de Sillage">
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+          </button>
+        </div>
+      </div>
+      <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-sillage">
+        <span class="bar-title"><img src="assets/img/sillage-icone.png" alt="" class="bar-icon"><span><b>Sillage</b> : la vie d'un étudiant, au même endroit <span class="bar-proof">· fac, argent, santé et voyages en 12 sections</span></span></span>
+        <span class="tags"><span>logiciel</span><span>macOS natif</span><span>swift</span></span>
       </button>
     </article>
 
@@ -428,6 +458,39 @@
   </div>
   <p class="note">Captures réalisées sur la version de démonstration, avec des données fictives.</p>
   <p class="tags"><span>analyse du besoin</span><span>développement</span><span>tableaux de bord</span><span>tests automatiques</span></p>
+</dialog>
+
+<dialog id="m-sillage" class="modal" aria-labelledby="m-sillage-title">
+  <button class="close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="modal-head">
+    <img src="assets/img/sillage-icone.png" alt="" class="modal-icon">
+    <div><h2 id="m-sillage-title">Sillage</h2><p class="motto">« Votre vie, au même endroit. » · Projet personnel, 2026</p></div>
+  </div>
+  <p>Une application native pour Mac, née d'un besoin simple : ne plus disperser sa vie d'étudiant entre un emploi du temps, une application bancaire, des billets et des papiers. Sillage réunit la fac, les tâches, le sport, l'actualité, les finances, les voyages, la santé et l'administratif, et s'ouvre chaque jour sur ce qui compte aujourd'hui. Les données sont enregistrées sur le Mac, avec une sauvegarde automatique chaque jour.</p>
+  <div class="cols">
+    <div><h3>À la fac</h3><ul><li>Emploi du temps relié au Calendrier du Mac</li><li>Notes, moyennes et note à viser pour atteindre son objectif</li><li>Révisions réparties avant chaque galop ou partiel</li><li>Cours enregistrés et transcrits sur le Mac, sans Internet</li></ul></div>
+    <div><h3>Au quotidien</h3><ul><li><b>Finances</b> : banques reliées, budgets, prévision de fin de mois</li><li>Abonnements repérés dans les prélèvements</li><li>Vols et trains suivis en direct, retards compris</li><li>Santé, scores des matchs et papiers lus depuis un fichier</li></ul></div>
+  </div>
+  <dl class="facts">
+    <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, direction visuelle, code, tests et vidéo de présentation.</dd></div>
+    <div><dt>Technologies</dt><dd>Swift et SwiftUI, application native macOS · données SwiftData · widgets WidgetKit · connecteurs ESPN, Enable Banking, API SNCF, Whoop et Open-Meteo</dd></div>
+  </dl>
+  <div class="proof">
+    <h3>Une application qui propose sans décider</h3>
+    <p>Sillage se remplit à partir de sources gratuites : banque, scores, vols, trains, santé. Mais il laisse le dernier mot : un prélèvement régulier ne devient un abonnement que si on l'accepte, et un document lu dans un fichier se vérifie avant d'être ajouté.</p>
+  </div>
+  <div class="gallery">
+    <img src="assets/img/sillage-01-aujourdhui.jpg" alt="Aujourd'hui : la journée sur une frise, la santé, le budget et le prochain voyage" loading="lazy">
+    <img src="assets/img/sillage-02-emploi-du-temps.jpg" alt="L'emploi du temps de la semaine, avec les cours et les séances de révision" loading="lazy">
+    <img src="assets/img/sillage-03-matiere.jpg" alt="La fiche d'une matière : moyenne, enregistrements, devoirs et notes" loading="lazy">
+    <img src="assets/img/sillage-04-notes.jpg" alt="Notes et moyennes : la moyenne par matière et l'objectif visé" loading="lazy">
+    <img src="assets/img/sillage-05-finances-nuit.jpg" alt="Les statistiques des finances, en sombre" loading="lazy">
+    <img src="assets/img/sillage-06-sante-nuit.jpg" alt="La santé : récupération, sommeil et activité, en sombre" loading="lazy">
+    <img src="assets/img/sillage-07-voyages.jpg" alt="Voyages : un vol suivi en direct, avec le terminal et le tapis à bagages" loading="lazy">
+    <img src="assets/img/sillage-08-administratif.jpg" alt="Administratif : les papiers à surveiller et leurs échéances" loading="lazy">
+  </div>
+  <p class="note">Vidéo et captures réalisées avec les données d'exemple de l'application : les notes, les comptes, les mesures de santé et les voyages montrés sont fictifs.</p>
+  <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>vidéo</span></p>
 </dialog>
 
 <dialog id="m-arbre" class="modal" aria-labelledby="m-arbre-title">
