@@ -279,30 +279,26 @@
 
     <!-- Sillage -->
     <article class="project" id="p-sillage" data-modal="m-sillage">
-      <div class="tiles tiles-film">
-        <button class="tile tile-logo reveal" tabindex="-1" aria-hidden="true" style="--bg:linear-gradient(135deg,#2F5BD3,#1E3A8A)">
+      <div class="tiles" aria-hidden="true">
+        <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#2B4FC0">
           <img src="assets/img/sillage-symbole-blanc.svg" alt="" class="tile-mark">
           <span class="grid-lines"></span>
         </button>
-        <button class="tile tile-shot reveal" tabindex="-1" aria-hidden="true" style="--bg:#EEF0F3">
-          <img src="assets/img/sillage-tuile.jpg" alt="" loading="lazy">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#EEF0F1">
+          <img src="assets/img/sillage-01-aujourdhui.jpg" alt="" loading="lazy">
         </button>
-        <div class="film-card reveal">
-          <button class="film-open" tabindex="-1" aria-hidden="true">
-            <span class="film-screen">
-              <video src="assets/img/sillage-boucle.mp4" poster="assets/img/sillage-boucle-affiche.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-            </span>
-          </button>
-          <span class="film-note">Données d'exemple</span>
-          <button class="video-toggle" id="film-toggle" aria-label="Mettre en pause la vidéo de Sillage">
-            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
-            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
-          </button>
-        </div>
+      </div>
+      <div class="tiles reverse" aria-hidden="true">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#EEF0F1">
+          <img src="assets/img/sillage-02-emploi-du-temps.jpg" alt="" loading="lazy">
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#14151A">
+          <img src="assets/img/sillage-05-finances-nuit.jpg" alt="" loading="lazy">
+        </button>
       </div>
       <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-sillage">
         <span class="bar-title"><img src="assets/img/sillage-icone.png" alt="" class="bar-icon"><span><b>Sillage</b> : la vie d'un étudiant, au même endroit <span class="bar-proof">· fac, argent, santé et voyages en 12 sections</span></span></span>
-        <span class="tags"><span>logiciel</span><span>macOS natif</span><span>swift</span></span>
+        <span class="tags"><span>logiciel</span><span>swift</span><span>vie étudiante</span></span>
       </button>
     </article>
 
@@ -478,6 +474,13 @@
   <div class="proof">
     <h3>Une application qui propose sans décider</h3>
     <p>Sillage se remplit à partir de sources gratuites : banque, scores, vols, trains, santé. Mais il laisse le dernier mot : un prélèvement régulier ne devient un abonnement que si on l'accepte, et un document lu dans un fichier se vérifie avant d'être ajouté.</p>
+  </div>
+  <div class="modal-film">
+    <video src="assets/img/sillage-boucle.mp4" poster="assets/img/sillage-boucle-affiche.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <button class="video-toggle" id="film-toggle" aria-label="Mettre en pause la vidéo de Sillage">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+    </button>
   </div>
   <div class="gallery">
     <img src="assets/img/sillage-01-aujourdhui.jpg" alt="Aujourd'hui : la journée sur une frise, la santé, le budget et le prochain voyage" loading="lazy">

@@ -136,9 +136,9 @@ if (!reduce) {
   drift();
 }
 
-// Sillage video: loads and plays only while on screen, so the page stays light.
+// Sillage video, in the project window: loads and plays only while on screen, so the page stays light.
 // Reduced motion leaves it on its poster, and a pause stays paused until the visitor resumes it.
-const film = document.querySelector('.film-screen video');
+const film = document.querySelector('.modal-film video');
 const filmToggle = document.getElementById('film-toggle');
 let filmHeld = reduce;
 function syncFilmToggle() {
@@ -157,10 +157,10 @@ new IntersectionObserver(([e]) => {
 }, { threshold: 0.25 }).observe(film);
 syncFilmToggle();
 
-// Project modals (the pause button of a video is not a way in)
+// Project modals
 document.querySelectorAll('.project').forEach((p) => {
   const dialog = document.getElementById(p.dataset.modal);
-  p.querySelectorAll('button:not(.video-toggle)').forEach((b) => b.addEventListener('click', () => {
+  p.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => {
     dialog.showModal();
     dialog.scrollTop = 0;
   }));
@@ -168,6 +168,8 @@ document.querySelectorAll('.project').forEach((p) => {
 document.querySelectorAll('.modal').forEach((d) => {
   d.querySelector('.close').addEventListener('click', () => d.close());
   d.addEventListener('click', (ev) => {
+    // A click made with the keyboard reports 0,0: only a click on the backdrop itself counts
+    if (ev.target !== d) return;
     const r = d.getBoundingClientRect();
     const outside = ev.clientX < r.left || ev.clientX > r.right || ev.clientY < r.top || ev.clientY > r.bottom;
     if (outside) d.close();

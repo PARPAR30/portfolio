@@ -197,27 +197,6 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
   transition:transform 1.1s var(--ease);
 }
 .tiles.reverse .tile-shot img{left:9%;top:14%;width:120%}
-/* Projet avec vidéo : le logo et une capture à gauche, la vidéo en boucle sur le côté */
-.tiles-film{grid-template-rows:auto auto}
-.tiles-film .tile-logo{grid-column:1;grid-row:1}
-.tiles-film .tile-shot{grid-column:1;grid-row:2}
-.tiles-film .tile-shot img{left:9%;top:14%;width:150%}
-.film-card{
-  grid-column:2;grid-row:1 / span 2;position:relative;
-  display:grid;place-items:center;padding:clamp(18px,4%,44px);
-  background:var(--soft);border-radius:var(--tile-radius);
-}
-.film-open{display:block;width:100%}
-.film-screen{
-  display:block;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
-  background:#0E0F12;box-shadow:0 30px 60px -30px rgba(0,0,0,.35);
-  animation:float 6s ease-in-out infinite;
-}
-.film-screen video{width:100%;height:100%;object-fit:cover;display:block}
-.film-note{
-  position:absolute;left:clamp(18px,3vw,34px);bottom:clamp(18px,2.8vw,32px);
-  font-size:13px;color:var(--muted);
-}
 .tile-shot:hover img{transform:translate(-3%,calc(-4% + var(--drift,0px))) scale(1.03)}
 .tile-logo .tile-mark{width:34%;max-width:110px;transition:transform 1s var(--ease)}
 .tile-logo .tile-mark.orb{width:56%;max-width:190px;position:relative;z-index:1}
@@ -370,6 +349,9 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .proof{border:1px solid var(--line);border-radius:22px;padding:20px 22px;margin-bottom:24px}
 .proof h3{font-size:17px;margin-bottom:6px;color:var(--brand-violet)}
 .proof p{color:var(--muted);font-size:15px;max-width:72ch}
+/* Vidéo de présentation dans la fiche, juste avant les captures */
+.modal-film{position:relative;margin-bottom:14px;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#0E0F12}
+.modal-film video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
 .gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
 .gallery img{border-radius:14px;border:1px solid var(--line);width:100%}
 .gallery .shot{display:block;position:relative;border-radius:14px;cursor:zoom-in}
@@ -443,7 +425,7 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
   html{scroll-behavior:auto}
   .js .reveal{transform:none;transition:opacity .4s linear}
   .intro .w,.logos li,.top,.reveal-pop,.hero-name{animation:none;opacity:1;transform:none;filter:none}
-  .hero-screen,.film-screen{animation:none}
+  .hero-screen{animation:none}
   .goal,.hero-actions{animation:none;opacity:1}
   .tile-shot img,.xp-logo,.hero-card{transition:none;transform:none}
   .modal[open],.viewer[open],.viewer-stage img.swap{animation:none}
@@ -462,9 +444,6 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
   .tiles,.tiles.reverse{grid-template-columns:1fr 1fr;gap:14px}
   .project .tiles + .tiles{margin-top:14px}
   .tile{height:clamp(160px,34vw,260px)}
-  /* la vidéo passe sous le logo et la capture, sur toute la largeur */
-  .tiles-film .tile-shot{grid-column:2;grid-row:1}
-  .film-card{grid-column:1 / -1;grid-row:2;padding:16px 16px 72px}
   .bar{border-radius:26px;flex-direction:column;align-items:flex-start}
   .bar:focus-visible{border-radius:26px}
   .tags{justify-content:flex-start}
