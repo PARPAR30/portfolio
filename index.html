@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=18">
   <script>document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
@@ -71,15 +71,8 @@
       </ul>
     </div>
     <div class="hero-right reveal">
-      <div class="hero-card">
-        <div class="hero-screen">
-          <video src="assets/img/paraphe-boucle.mp4" poster="assets/img/paraphe-boucle-affiche.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video>
-        </div>
-        <button class="video-toggle" id="video-toggle" aria-label="Lire la vidéo de Paraphe">
-          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
-          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
-        </button>
-      </div>
+      <!-- Place réservée à la future animation de l'accueil -->
+      <div class="hero-card" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -282,7 +275,7 @@
     <article class="project" id="p-suivi" data-modal="m-suivi">
       <div class="tiles" aria-hidden="true">
         <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#1C6E72">
-          <img src="assets/img/suivi-symbole-blanc.svg" alt="" class="tile-mark">
+          <img src="assets/img/suivi-logo.png" alt="" class="tile-mark logo-app">
           <span class="grid-lines"></span>
         </button>
         <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#EEF1F2">
@@ -439,6 +432,13 @@
   <div class="proof">
     <h3>Des délais vérifiés, un par un</h3>
     <p>Chaque délai de Quantième renvoie à son article. Tout le référentiel a été comparé au texte consolidé des codes, avec le droit arrêté au 13 octobre 2026 : 69 corrections en sont sorties (délai, unité, article ou point de départ). Paraphe reste un outil d'organisation : il ne donne pas de conseil juridique, et chaque délai se vérifie dans le texte.</p>
+  </div>
+  <div class="modal-film" data-name="Paraphe">
+    <video src="assets/img/paraphe-boucle.mp4" poster="assets/img/paraphe-boucle-affiche.jpg" style="aspect-ratio:16/10" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <button class="video-toggle" aria-label="Mettre en pause la vidéo de Paraphe">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+    </button>
   </div>
   <div class="gallery">
     <img src="assets/img/paraphe-01-accueil.jpg" alt="L'accueil : ce qui demande votre attention aujourd'hui, et les six outils" loading="lazy">
@@ -663,6 +663,6 @@
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
 </dialog>
 
-<script src="script.js?v=9"></script>
+<script src="script.js?v=10"></script>
 </body>
 </html>

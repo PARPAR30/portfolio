@@ -41,19 +41,6 @@ document.querySelectorAll('.cta, .pill-link').forEach((b) => {
   }
 });
 
-// Hero video: plays unless the visitor asked for reduced motion, and can always be paused
-const video = document.querySelector('.hero-screen video');
-const videoToggle = document.getElementById('video-toggle');
-function syncVideoToggle() {
-  videoToggle.classList.toggle('paused', video.paused);
-  videoToggle.setAttribute('aria-label', video.paused ? 'Lire la vidéo de Paraphe' : 'Mettre en pause la vidéo de Paraphe');
-}
-videoToggle.addEventListener('click', () => { if (video.paused) video.play(); else video.pause(); });
-video.addEventListener('play', syncVideoToggle);
-video.addEventListener('pause', syncVideoToggle);
-if (!reduce) video.play().catch(syncVideoToggle);
-syncVideoToggle();
-
 // Hero sentence: reveal word by word. Screen readers get the sentence in one piece.
 const intro = document.querySelector('.intro');
 const bubble = intro.querySelector('.bubble');
