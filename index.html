@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pierre-Antoine Ruat · Droit &amp; outils juridiques</title>
-  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, des outils numériques pour les juristes et les auditeurs, et des logiciels plus personnels : Paraphe, AuditPro, Arbre Généalogique, Vigie et Établi.">
+  <meta name="description" content="Portfolio et CV de Pierre-Antoine Ruat : licence de droit à Paris Nanterre, juriste stagiaire chez Saint-Gobain Distribution Bâtiment France, Berluti pour les Jeux de Paris 2024, des outils numériques pour les juristes et les auditeurs, et des logiciels plus personnels : Paraphe, AuditPro, Suivi AN, Sillage, Arbre Généalogique, Vigie et Établi.">
   <!-- Aperçu du lien (LinkedIn, e-mail, messageries) -->
   <link rel="canonical" href="https://parpar30.github.io/portfolio/">
   <meta property="og:url" content="https://parpar30.github.io/portfolio/">
@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
   <script>document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
@@ -221,6 +221,7 @@
     <ul class="apps reveal" aria-label="Aller à un projet">
       <li><a href="#p-paraphe"><img src="assets/img/paraphe-icone.png" alt="" class="app-icon"><span><b>Paraphe</b><small>Outils juridiques</small></span></a></li>
       <li><a href="#p-audit"><span class="app-icon ap" aria-hidden="true">A</span><span><b>AuditPro</b><small>Audit interne</small></span></a></li>
+      <li><a href="#p-suivi"><img src="assets/img/suivi-icone.png" alt="" class="app-icon"><span><b>Suivi AN</b><small>Vie parlementaire</small></span></a></li>
       <li><a href="#p-sillage"><img src="assets/img/sillage-icone.png" alt="" class="app-icon"><span><b>Sillage</b><small>Vie d'étudiant</small></span></a></li>
       <li><a href="#p-arbre"><img src="assets/img/arbre-icone.svg" alt="" class="app-icon"><span><b>Arbre Généalogique</b><small>Histoire d'une famille</small></span></a></li>
       <li><a href="#p-vigie"><img src="assets/img/vigie-icone.png" alt="" class="app-icon"><span><b>Vigie</b><small>Santé du Mac</small></span></a></li>
@@ -274,6 +275,31 @@
       <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-audit">
         <span class="bar-title"><span class="bar-icon ap" aria-hidden="true">A</span><span><b>AuditPro</b> : le pilotage d'une direction d'audit interne <span class="bar-proof">· des classeurs Excel à la présentation au board en un clic</span></span></span>
         <span class="tags"><span>tableaux de bord</span><span>powerpoint</span><span class="nda"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>confidentiel</span></span>
+      </button>
+    </article>
+
+    <!-- Suivi AN -->
+    <article class="project" id="p-suivi" data-modal="m-suivi">
+      <div class="tiles" aria-hidden="true">
+        <button class="tile tile-logo reveal" tabindex="-1" style="--bg:#1C6E72">
+          <img src="assets/img/suivi-symbole-blanc.svg" alt="" class="tile-mark">
+          <span class="grid-lines"></span>
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#EEF1F2">
+          <img src="assets/img/suivi-01-aujourdhui.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <div class="tiles reverse" aria-hidden="true">
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#EEF1F2">
+          <img src="assets/img/suivi-03-hemicycle.jpg" alt="" loading="lazy">
+        </button>
+        <button class="tile tile-shot reveal" tabindex="-1" style="--bg:#14151A">
+          <img src="assets/img/suivi-02-examen-nuit.jpg" alt="" loading="lazy">
+        </button>
+      </div>
+      <button class="bar reveal" aria-haspopup="dialog" aria-controls="m-suivi">
+        <span class="bar-title"><img src="assets/img/suivi-icone.png" alt="" class="bar-icon"><span><b>Suivi AN</b> : l'Assemblée nationale, en direct <span class="bar-proof">· 9 759 scrutins publics depuis 2024</span></span></span>
+        <span class="tags"><span>logiciel</span><span>swift</span><span>vie parlementaire</span></span>
       </button>
     </article>
 
@@ -456,6 +482,46 @@
   <p class="tags"><span>analyse du besoin</span><span>développement</span><span>tableaux de bord</span><span>tests automatiques</span></p>
 </dialog>
 
+<dialog id="m-suivi" class="modal" aria-labelledby="m-suivi-title">
+  <button class="close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <div class="modal-head">
+    <img src="assets/img/suivi-icone.png" alt="" class="modal-icon">
+    <div><h2 id="m-suivi-title">Suivi AN</h2><p class="motto">« L'Assemblée nationale, en direct. » · Projet personnel, 2026</p></div>
+  </div>
+  <p>Une application native pour Mac qui réunit au même endroit le travail de l'Assemblée nationale : les textes, les amendements, les scrutins, les commissions et l'agenda, avec une partie dédiée au projet de loi de finances en cours. Elle rassemble des sources dispersées, de l'open data à eLiasse, l'outil de suivi en direct de l'Assemblée. Toutes ces données sont publiques, et elles sont enregistrées sur le Mac. Un outil indépendant et non officiel.</p>
+  <div class="cols">
+    <div><h3>Suivre</h3><ul><li><b>Discussions</b> : le déroulé des amendements, en séance et en commission, avec le rythme et la fin estimée</li><li>Une alerte quand un amendement marqué approche de la discussion</li><li>Les scrutins publics et les votes de chaque député, environ 90 secondes après leur publication</li><li>La navette d'un texte, et ses versions comparées mot à mot, article par article</li></ul></div>
+    <div><h3>Analyser et préparer</h3><ul><li><b>Statistiques</b> : toute la législature, une session, deux dates ou un seul texte</li><li>Hémicycle cliquable, carte des députés et calculateur de majorité</li><li>Crédits du budget par mission, et comparaison avec le budget précédent</li><li>Bilan du jour, tableau de la semaine et feuille de séance, à exporter</li></ul></div>
+  </div>
+  <dl class="facts">
+    <div><dt>Mon rôle</dt><dd>Conçu et développé seul, avec l'aide d'outils d'IA : besoin, direction visuelle, code et vidéo de présentation.</dd></div>
+    <div><dt>Technologies</dt><dd>Swift et SwiftUI, application native macOS · moteur de données local en Python · bases SQLite · open data de l'Assemblée nationale · widgets WidgetKit · résumés rédigés sur le Mac par l'IA d'Apple · bot Telegram</dd></div>
+  </dl>
+  <div class="proof">
+    <h3>Ne jamais faire passer une déduction pour un fait</h3>
+    <p>Tout n'est pas publié. Le vote d'un article à main levée ne l'est pas : quand l'adoption est déduite, l'écran le signale. La présence en séance non plus : elle est estimée à partir des votes et des prises de parole. Et le texte final reste celui publié par l'Assemblée : l'application ne le reconstruit jamais à partir des amendements.</p>
+  </div>
+  <div class="modal-film" data-name="Suivi AN">
+    <video src="assets/img/suivi-boucle.mp4" poster="assets/img/suivi-boucle-affiche.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <button class="video-toggle" aria-label="Mettre en pause la vidéo de Suivi AN">
+      <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+      <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+    </button>
+  </div>
+  <div class="gallery">
+    <img src="assets/img/suivi-01-aujourdhui.jpg" alt="Aujourd'hui : la séance, le programme, les derniers scrutins et les chiffres du jour" loading="lazy">
+    <img src="assets/img/suivi-02-examen-nuit.jpg" alt="Le déroulé d'un examen : l'amendement en discussion et ceux qui suivent, en sombre" loading="lazy">
+    <img src="assets/img/suivi-03-hemicycle.jpg" alt="L'hémicycle : un plan cliquable, coloré par groupe ou par mesure" loading="lazy">
+    <img src="assets/img/suivi-04-parcours-texte.jpg" alt="La fiche d'un texte : son parcours, de la saisine à la promulgation" loading="lazy">
+    <img src="assets/img/suivi-05-budget-nuit.jpg" alt="Le budget : les crédits par mission du projet de loi de finances, en sombre" loading="lazy">
+    <img src="assets/img/suivi-06-carte-nuit.jpg" alt="Analyses de vote : la carte des députés, calculée à partir de leurs votes, en sombre" loading="lazy">
+    <img src="assets/img/suivi-07-comparaison-nuit.jpg" alt="Comparaison du budget 2027 avec le budget précédent, en sombre" loading="lazy">
+    <img src="assets/img/suivi-08-statistiques-nuit.jpg" alt="Les statistiques de la législature : scrutins, amendements, textes et réunions, en sombre" loading="lazy">
+  </div>
+  <p class="note">Vidéo et captures réalisées avec l'application le 5 novembre 2026, à partir des données publiques de l'Assemblée nationale (Licence ouverte). Outil indépendant, sans lien avec l'Assemblée nationale.</p>
+  <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>données publiques</span><span>vidéo</span></p>
+</dialog>
+
 <dialog id="m-sillage" class="modal" aria-labelledby="m-sillage-title">
   <button class="close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
   <div class="modal-head">
@@ -475,9 +541,9 @@
     <h3>Une application qui propose sans décider</h3>
     <p>Sillage se remplit à partir de sources gratuites : banque, scores, vols, trains, santé. Mais il laisse le dernier mot : un prélèvement régulier ne devient un abonnement que si on l'accepte, et un document lu dans un fichier se vérifie avant d'être ajouté.</p>
   </div>
-  <div class="modal-film">
+  <div class="modal-film" data-name="Sillage">
     <video src="assets/img/sillage-boucle.mp4" poster="assets/img/sillage-boucle-affiche.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
-    <button class="video-toggle" id="film-toggle" aria-label="Mettre en pause la vidéo de Sillage">
+    <button class="video-toggle" aria-label="Mettre en pause la vidéo de Sillage">
       <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
       <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
     </button>
@@ -597,6 +663,6 @@
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
 </dialog>
 
-<script src="script.js?v=8"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>

@@ -136,26 +136,28 @@ if (!reduce) {
   drift();
 }
 
-// Sillage video, in the project window: loads and plays only while on screen, so the page stays light.
+// Videos in the project windows: each loads and plays only while on screen, so the page stays light.
 // Reduced motion leaves it on its poster, and a pause stays paused until the visitor resumes it.
-const film = document.querySelector('.modal-film video');
-const filmToggle = document.getElementById('film-toggle');
-let filmHeld = reduce;
-function syncFilmToggle() {
-  filmToggle.classList.toggle('paused', film.paused);
-  filmToggle.setAttribute('aria-label', film.paused ? 'Lire la vidéo de Sillage' : 'Mettre en pause la vidéo de Sillage');
-}
-filmToggle.addEventListener('click', () => {
-  filmHeld = !film.paused;
-  if (filmHeld) film.pause(); else film.play();
+document.querySelectorAll('.modal-film').forEach((box) => {
+  const film = box.querySelector('video');
+  const toggle = box.querySelector('.video-toggle');
+  let held = reduce;
+  function sync() {
+    toggle.classList.toggle('paused', film.paused);
+    toggle.setAttribute('aria-label', `${film.paused ? 'Lire' : 'Mettre en pause'} la vidéo de ${box.dataset.name}`);
+  }
+  toggle.addEventListener('click', () => {
+    held = !film.paused;
+    if (held) film.pause(); else film.play();
+  });
+  film.addEventListener('play', sync);
+  film.addEventListener('pause', sync);
+  new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) film.pause();
+    else if (!held) film.play().catch(sync);
+  }, { threshold: 0.25 }).observe(film);
+  sync();
 });
-film.addEventListener('play', syncFilmToggle);
-film.addEventListener('pause', syncFilmToggle);
-new IntersectionObserver(([e]) => {
-  if (!e.isIntersecting) film.pause();
-  else if (!filmHeld) film.play().catch(syncFilmToggle);
-}, { threshold: 0.25 }).observe(film);
-syncFilmToggle();
 
 // Project modals
 document.querySelectorAll('.project').forEach((p) => {
