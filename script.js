@@ -126,7 +126,7 @@ if (!reduce) {
   let heroSrc = '';
   const playHero = () => heroFilm.play().catch(() => {});
   const loadHero = () => {
-    const src = `assets/img/atelier-${isDark() ? 'sombre' : 'clair'}.mp4?v=3`;
+    const src = `assets/img/atelier-${isDark() ? 'sombre' : 'clair'}.mp4?v=4`;
     if (src === heroSrc) return;
     const at = heroFilm.currentTime;
     heroSrc = src;
