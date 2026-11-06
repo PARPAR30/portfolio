@@ -119,33 +119,207 @@ if (!reduce) {
   drift();
 }
 
-// Home animation: a silent loop in the visitor's theme. It loads once the page has, rests while off screen,
-// and keeps its place when the theme changes. Reduced motion leaves the still image set in the CSS.
+// Home animation. Wide screens get the full-width scene: an opening shot played once per visit, a silent loop
+// whose flying icon opens its project, and a dive into the machine driven by the scroll. Smaller screens get the
+// loop alone, cropped on the scene. Everything rests off screen, and reduced motion leaves the still image.
 const heroFilm = document.querySelector('.hero-film');
+const sceneFilm = document.querySelector('.scene-film');
+const sceneOuverture = document.querySelector('.scene-ouverture');
+const scenePlongee = document.querySelector('.scene-plongee');
+const sceneIcone = document.querySelector('.scene-icone');
+const heroStage = document.querySelector('.hero-stage');
+const heroLeft = document.querySelector('.hero-left');
+const siteTop = document.querySelector('.top');
+const large = matchMedia('(min-width:1280px)');
+const surScene = () => siteTop.classList.toggle('sur-scene', scrollY < 40);
+surScene();
+addEventListener('scroll', surScene, { passive: true });
 if (!reduce) {
-  let heroSrc = '';
-  const playHero = () => heroFilm.play().catch(() => {});
+  const V = 6, IMAGES = 48, DUREE = 20, PAS = 2.5, DEBUT = 6;
+  const ICONES = ['paraphe', 'audit', 'suivi', 'sillage', 'arbre', 'vigie', 'etabli'];
+  const theme = () => (isDark() ? 'sombre' : 'clair');
+  let film = null, heroSrc = '', enOuverture = false, profondeur = 0;
+  const hote = (f) => (f === sceneFilm ? heroStage : heroCard);
+  const playHero = () => { if (film && profondeur < 1 && !enOuverture) film.play().catch(() => {}); };
+
   const loadHero = () => {
-    const src = `assets/img/atelier-${isDark() ? 'sombre' : 'clair'}.mp4?v=4`;
+    const suivant = large.matches ? sceneFilm : heroFilm;
+    const src = `assets/img/atelier-${large.matches ? '' : 'mobile-'}${theme()}.mp4?v=${V}`;
     if (src === heroSrc) return;
-    const at = heroFilm.currentTime;
+    const at = suivant === film ? film.currentTime : 0;
+    if (film && film !== suivant) film.pause();
+    film = suivant;
     heroSrc = src;
-    heroFilm.classList.remove('pret');
-    heroCard.classList.remove('film-pret');
-    heroFilm.src = src;
-    heroFilm.addEventListener('loadedmetadata', () => { heroFilm.currentTime = at; }, { once: true });
+    film.classList.remove('pret');
+    hote(film).classList.remove('film-pret');
+    film.src = src;
+    film.addEventListener('loadedmetadata', () => { film.currentTime = at; }, { once: true });
     playHero();
   };
+
   // The still image must leave once the film shows: the blend would otherwise mix the two
-  heroFilm.addEventListener('canplay', () => heroFilm.classList.add('pret'));
-  heroFilm.addEventListener('transitionend', () => heroCard.classList.toggle('film-pret', heroFilm.classList.contains('pret')));
-  new MutationObserver(loadHero).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
-  darkScheme.addEventListener('change', loadHero);
-  new IntersectionObserver(([e]) => {
-    if (!heroSrc) return;
-    if (e.isIntersecting) playHero(); else heroFilm.pause();
-  }, { threshold: 0.2 }).observe(heroFilm);
-  addEventListener('load', loadHero);
+  [heroFilm, sceneFilm].forEach((f) => {
+    f.addEventListener('canplay', () => { if (f === film && !enOuverture) f.classList.add('pret'); });
+    f.addEventListener('transitionend', () => hote(f).classList.toggle('film-pret', f.classList.contains('pret')));
+  });
+
+  // The opening shot: the text and the bar wait for it, and a slow connection goes straight to the loop
+  const montreTexte = () => root.classList.remove('film-ouverture');
+  const finOuverture = () => {
+    if (!enOuverture) return;
+    enOuverture = false;
+    montreTexte();
+    heroStage.classList.remove('ouvre');
+    sceneOuverture.removeAttribute('src');
+    sceneOuverture.load();
+  };
+  // Back to the plain start: the still image first, then the loop
+  const repli = () => {
+    finOuverture();
+    film = null;
+    heroSrc = '';
+    heroStage.classList.remove('film-pret');
+    loadHero();
+  };
+  const lanceOuverture = () => {
+    enOuverture = true;
+    const th = theme();
+    try { sessionStorage.setItem('ouverture-vue', '1'); } catch (e) {}
+    heroStage.classList.add('film-pret');
+    // The loop waits underneath, ready to take over on the very frame the opening ends on
+    film = sceneFilm;
+    heroSrc = `assets/img/atelier-${th}.mp4?v=${V}`;
+    film.preload = 'auto';
+    film.src = heroSrc;
+    sceneOuverture.preload = 'auto';
+    sceneOuverture.src = `assets/img/atelier-ouverture-${th}.mp4?v=${V}`;
+    const abandon = setTimeout(repli, 1600);
+    sceneOuverture.addEventListener('canplay', () => {
+      clearTimeout(abandon);
+      if (!enOuverture) return;
+      heroStage.classList.add('ouvre');
+      sceneOuverture.play().catch(repli);
+    }, { once: true });
+    sceneOuverture.addEventListener('timeupdate', () => { if (sceneOuverture.currentTime > 4.72) montreTexte(); });
+    sceneOuverture.addEventListener('ended', () => {
+      film.addEventListener('playing', () => {
+        // Same frame, no fade: the loop takes the place of the opening at once
+        film.style.transition = 'none';
+        film.classList.add('pret');
+        void film.offsetWidth;
+        finOuverture();
+        film.style.transition = '';
+      }, { once: true });
+      film.play().catch(repli);
+    }, { once: true });
+    addEventListener('scroll', montreTexte, { once: true, passive: true });
+  };
+
+  const changeHero = () => {
+    if (enOuverture) repli(); else loadHero();
+    chargePlongee();
+  };
+  new MutationObserver(changeHero).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  darkScheme.addEventListener('change', changeHero);
+  large.addEventListener('change', changeHero);
+  [heroFilm, heroStage].forEach((el) => new IntersectionObserver(([e]) => {
+    if (!heroSrc || !film) return;
+    if (e.isIntersecting) playHero(); else film.pause();
+  }, { threshold: 0.2 }).observe(el));
+
+  // The dive: still frames follow the scroll exactly, which a video cannot do without stutter
+  const images = [];
+  let serie = '', vue = -1, finPiste = 1, attente = 0;
+  const ctx = scenePlongee.getContext('2d');
+  const connexionLente = () => navigator.connection && navigator.connection.saveData;
+  function chargePlongee() {
+    if (!large.matches || connexionLente() || serie === theme()) return;
+    serie = theme();
+    vue = -1;
+    images.length = 0;
+    for (let i = 1; i <= IMAGES; i++) {
+      const img = new Image();
+      img.src = `assets/img/atelier-plongee-${serie}/${String(i).padStart(2, '0')}.jpg?v=${V}`;
+      images.push(img);
+    }
+  }
+  const mesurePiste = () => {
+    finPiste = Math.max(1, document.getElementById('parcours').getBoundingClientRect().top + scrollY - innerHeight);
+  };
+  const lisse = (a, b, x) => { const u = Math.min(1, Math.max(0, (x - a) / (b - a))); return u * u * (3 - 2 * u); };
+  let dx = 0, dy = 0, cx = 0, cy = 0, zoom = 1, derive = 0;
+  const pose = () => {
+    sceneFilm.style.transform = `translate3d(${cx.toFixed(2)}px,${cy.toFixed(2)}px,0) scale(${zoom.toFixed(3)})`;
+    sceneIcone.style.transform = `translate3d(${cx.toFixed(2)}px,${cy.toFixed(2)}px,0)`;
+  };
+  const plonge = () => {
+    attente = 0;
+    if (!large.matches) { heroLeft.removeAttribute('style'); return; }
+    const p = Math.min(1, scrollY / finPiste);
+    const avant = profondeur;
+    profondeur = p;
+    const i = Math.round(p * (IMAGES - 1));
+    const img = images[i];
+    const prete = img && img.complete && img.naturalWidth > 0;
+    if (prete && i !== vue) { ctx.drawImage(img, 0, 0, 1280, 800); vue = i; }
+    const q = prete ? lisse(0, .1, p) : 0;
+    heroStage.classList.toggle('plonge', p > 0);
+    scenePlongee.style.opacity = q;
+    if (p > 0) sceneFilm.style.opacity = 1 - q; else sceneFilm.style.opacity = '';
+    zoom = prete ? 1 : 1 + p * .8;
+    pose();
+    heroStage.style.opacity = p > 0 ? 1 - lisse(.84, 1, p) : '';
+    siteTop.classList.toggle('efface', p > .04 && p < 1);
+    // The text leaves before the dive reaches it: the scene never runs behind the words
+    const texte = p > 0 ? 1 - lisse(.03, .16, p) : 1;
+    heroLeft.style.transition = p > 0 ? 'none' : '';
+    heroLeft.style.opacity = p > 0 ? texte : '';
+    heroLeft.style.pointerEvents = texte < .1 ? 'none' : '';
+    // Above the dive the loop plays; once the frames cover it, it can rest
+    if (q >= 1 && avant < 1 && film === sceneFilm) film.pause();
+    if (q < 1 && film === sceneFilm && film.paused && !enOuverture) playHero();
+  };
+  addEventListener('scroll', () => { if (!attente) attente = requestAnimationFrame(plonge); }, { passive: true });
+  addEventListener('resize', mesurePiste);
+
+  // The scene follows the pointer a little, and the flying icon opens its project
+  if (matchMedia('(pointer: fine)').matches) {
+    const glisse = () => {
+      cx += (dx - cx) * .08;
+      cy += (dy - cy) * .08;
+      pose();
+      derive = Math.abs(dx - cx) + Math.abs(dy - cy) > .1 ? requestAnimationFrame(glisse) : 0;
+    };
+    addEventListener('pointermove', (ev) => {
+      if (!large.matches || enOuverture || scrollY > 0) return;
+      dx = (.5 - ev.clientX / innerWidth) * 18;
+      dy = (.5 - ev.clientY / innerHeight) * 10;
+      if (!derive) derive = requestAnimationFrame(glisse);
+    }, { passive: true });
+  }
+  const icone = () => Math.floor((((sceneFilm.currentTime - DEBUT) % DUREE) + DUREE) % DUREE / PAS);
+  const dialogue = (id) => document.getElementById(`m-${id}`);
+  sceneFilm.addEventListener('timeupdate', () => {
+    const id = ICONES[icone()];
+    sceneIcone.hidden = !id || enOuverture || profondeur > 0;
+    if (id) sceneIcone.dataset.nom = dialogue(id).querySelector('h2').textContent;
+  });
+  sceneIcone.addEventListener('click', () => {
+    const id = ICONES[icone()];
+    if (!id) return;
+    dialogue(id).showModal();
+    dialogue(id).scrollTop = 0;
+  });
+
+  mesurePiste();
+  if (root.classList.contains('film-ouverture') && large.matches) lanceOuverture();
+  addEventListener('load', () => {
+    mesurePiste();
+    plonge();
+    if (!enOuverture && !film) { montreTexte(); loadHero(); }
+    setTimeout(chargePlongee, enOuverture ? 5500 : 1500);
+  });
+  addEventListener('scroll', chargePlongee, { once: true, passive: true });
 }
 
 // Videos in the project windows: each loads and plays only while on screen, so the page stays light.

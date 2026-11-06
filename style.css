@@ -133,22 +133,85 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 /* L'atelier flotte sur la page : le fond de la vidéo (blanc ou noir pur) disparaît dans le fond du site.
    Un encodage vidéo décale toujours un peu les couleurs : ce fondu évite tout rectangle visible. */
 .hero-card{
-  background:var(--bg) url(assets/img/atelier-affiche-clair.jpg?v=4) center/100% no-repeat;
+  background:var(--bg) url(assets/img/atelier-affiche-clair.jpg?v=6) center/100% no-repeat;
   background-blend-mode:darken;
   border-radius:var(--tile-radius);overflow:hidden;
-  aspect-ratio:1.55;transition:transform .8s var(--ease);
+  aspect-ratio:1.7;transition:transform .8s var(--ease);
   width:110%;margin-left:-7%;
 }
 .hero-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s linear;mix-blend-mode:darken}
 .hero-film.pret{opacity:1}
 .hero-card.film-pret{background-image:none!important}
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .hero-card{background-image:url(assets/img/atelier-affiche-sombre.jpg?v=4);background-blend-mode:lighten}
+  :root:not([data-theme="light"]) .hero-card{background-image:url(assets/img/atelier-affiche-sombre.jpg?v=6);background-blend-mode:lighten}
   :root:not([data-theme="light"]) .hero-film{mix-blend-mode:lighten}
 }
-:root[data-theme="dark"] .hero-card{background-image:url(assets/img/atelier-affiche-sombre.jpg?v=4);background-blend-mode:lighten}
+:root[data-theme="dark"] .hero-card{background-image:url(assets/img/atelier-affiche-sombre.jpg?v=6);background-blend-mode:lighten}
 :root[data-theme="dark"] .hero-film{mix-blend-mode:lighten}
 .hero-card{position:relative}
+
+/* Scène plein écran : la vidéo occupe toute la largeur, le texte se pose dans sa partie vide */
+.scene-piste,.scene-icone{display:none}
+@media (min-width:1280px){
+  :root{--piste:70vh;--descente:1.2vw}
+  main{position:relative;z-index:1}
+  .scene-piste{display:block;position:absolute;top:0;left:0;width:100%;height:calc(62.5vw + var(--descente) + var(--piste));overflow:clip}
+  .hero-stage{
+    position:sticky;top:0;margin-top:var(--descente);width:100%;aspect-ratio:16/10;overflow:hidden;
+    background:var(--bg) url(assets/img/atelier-accueil-clair.jpg?v=6) center/cover no-repeat;background-blend-mode:darken;
+  }
+  .hero-stage video,.scene-plongee{position:absolute;inset:0;width:100%;height:100%;display:block;mix-blend-mode:darken}
+  .scene-film{opacity:0;transition:opacity .5s linear}
+  .scene-film.pret{opacity:1}
+  .scene-ouverture,.scene-plongee{opacity:0}
+  .hero-stage.ouvre .scene-ouverture{opacity:1}
+  .hero-stage.plonge .scene-film{transition:none}
+  .hero-stage.film-pret,.film-ouverture .hero-stage{background-image:none!important}
+  /* Le menu et le texte d'accueil partagent le bord de la scène ; les sections suivantes restent centrées */
+  .top{max-width:none;padding-left:4.5vw;padding-right:4.5vw}
+  /* En haut de page, le menu laisse voir la scène : son fond masquerait le drapeau du palais */
+  .top.sur-scene{background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .hero{
+    display:block;padding:clamp(12px,1.6vw,28px) 0 0;min-height:calc(62.5vw - 76px);margin-bottom:var(--piste);
+    margin-left:calc(4.5vw - 32px - max(0px,(100vw - var(--page)) / 2));
+  }
+  /* Le texte tient dans l'angle laissé libre par la scène : au-dessus du pont, à gauche de la machine */
+  .hero-left{width:34vw;max-width:640px;display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:center;transition:opacity .9s var(--ease)}
+  .hero-left>:not(.avatar):not(.hero-name){grid-column:1/-1}
+  .hero-name{font-size:clamp(30px,3vw,48px);margin:0}
+  .intro{font-size:clamp(16px,1.3vw,20px);margin:16px 0 14px;max-width:none}
+  .logos{margin-top:12px}
+  .hero-right{display:none}
+  .film-ouverture .hero-left{opacity:0}
+  .top{transition:opacity .5s linear,background-color .3s linear}
+  .top.efface,.film-ouverture .top{opacity:0;pointer-events:none}
+  /* La zone cliquable suit l'icône qui plane au-dessus de son socle */
+  .scene-icone{
+    display:block;position:absolute;left:70.2vw;top:calc(62.5vw * .575 - 7vw + var(--descente));width:14vw;height:14vw;z-index:2;
+    border:0;border-radius:50%;background:none;padding:0;cursor:pointer;
+  }
+  .scene-icone[hidden]{display:none}
+  .scene-icone::after{
+    content:attr(data-nom);position:absolute;left:50%;bottom:-6px;transform:translate(-50%,6px);
+    padding:7px 14px;border-radius:999px;background:var(--text);color:var(--bg);font-size:14px;font-weight:600;white-space:nowrap;
+    opacity:0;transition:opacity .25s linear,transform .25s var(--ease);pointer-events:none;
+  }
+  .scene-icone:hover::after{opacity:1;transform:translate(-50%,0)}
+}
+@media (min-width:1280px) and (max-width:1359px){
+  .hero-left .logos{display:none}
+  .hero-name{font-size:32px}
+  .intro{font-size:15px;line-height:1.34;margin:10px 0}
+  .goal{font-size:13px;margin-bottom:10px}
+}
+@media (min-width:1280px) and (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .hero-stage{background-image:url(assets/img/atelier-accueil-sombre.jpg?v=6);background-blend-mode:lighten}
+  :root:not([data-theme="light"]) .hero-stage video,:root:not([data-theme="light"]) .scene-plongee{mix-blend-mode:lighten}
+}
+@media (min-width:1280px){
+  :root[data-theme="dark"] .hero-stage{background-image:url(assets/img/atelier-accueil-sombre.jpg?v=6);background-blend-mode:lighten}
+  :root[data-theme="dark"] .hero-stage video,:root[data-theme="dark"] .scene-plongee{mix-blend-mode:lighten}
+}
 .video-toggle{
   position:absolute;right:clamp(14px,2.4vw,26px);bottom:clamp(14px,2.4vw,26px);
   width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
@@ -443,6 +506,7 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
   .intro .w,.logos li,.top,.reveal-pop,.hero-name{animation:none;opacity:1;transform:none;filter:none}
   .goal,.hero-actions{animation:none;opacity:1}
   .tile-shot img,.xp-logo,.hero-card{transition:none;transform:none}
+  :root{--piste:0px}
   .modal[open],.viewer[open],.viewer-stage img.swap{animation:none}
   .gallery .shot img{transition:none}
   .btn__txt > span,.btn__ico .arrow{transition:none}
