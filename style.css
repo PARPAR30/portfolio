@@ -97,12 +97,12 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 
 /* ---------- Accueil ---------- */
 .hero{
-  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:32px;align-items:center;
   padding:40px 0 clamp(40px,6vw,72px);min-height:min(78vh,620px);
 }
 .avatar{width:58px;height:58px;border-radius:16px;overflow:hidden;background:var(--soft)}
 .avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
-.hero-name{font-size:clamp(38px,5vw,60px);font-weight:700;line-height:1.02;letter-spacing:-.035em;margin:22px 0 18px;opacity:0;animation:rise .9s var(--ease) .15s forwards}
+.hero-name{font-size:clamp(38px,3.6vw,52px);font-weight:700;line-height:1.02;letter-spacing:-.035em;margin:22px 0 18px;opacity:0;animation:rise .9s var(--ease) .15s forwards}
 .hero-role{display:block;font-size:clamp(16px,1.6vw,19px);font-weight:600;letter-spacing:-.005em;color:var(--accent);margin-top:12px}
 .intro{font-size:clamp(18px,1.8vw,21px);font-weight:400;line-height:1.4;letter-spacing:-.01em;margin:0 0 26px;max-width:470px;text-wrap:pretty}
 .intro .w{display:inline-block;opacity:0;transform:translateY(12px);filter:blur(4px);animation:word .8s var(--ease) forwards}
@@ -129,18 +129,22 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .hero-actions.center{justify-content:center;opacity:1;animation:none}
 .file{font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 6px;border-radius:6px;border:1px solid currentColor;opacity:.85}
 
+/* L'atelier flotte sur la page : le fond de la vidéo (blanc ou noir pur) disparaît dans le fond du site.
+   Un encodage vidéo décale toujours un peu les couleurs : ce fondu évite tout rectangle visible. */
 .hero-card{
-  background:#f0f0f0 url(assets/img/atelier-affiche-clair.jpg) center/cover;
+  background:var(--bg) url(assets/img/atelier-affiche-clair.jpg) center 70%/115% no-repeat;
+  background-blend-mode:darken;
   border-radius:var(--tile-radius);overflow:hidden;
   aspect-ratio:1.55;transition:transform .8s var(--ease);
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) .hero-card{background-color:#1b1b20;background-image:url(assets/img/atelier-affiche-sombre.jpg)}
-}
-:root[data-theme="dark"] .hero-card{background-color:#1b1b20;background-image:url(assets/img/atelier-affiche-sombre.jpg)}
-/* L'animation de l'accueil, posée sur son image fixe */
-.hero-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s linear}
+.hero-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s linear;mix-blend-mode:darken;transform:translateY(-3%) scale(1.15)}
 .hero-film.pret{opacity:1}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .hero-card{background-image:url(assets/img/atelier-affiche-sombre.jpg);background-blend-mode:lighten}
+  :root:not([data-theme="light"]) .hero-film{mix-blend-mode:lighten}
+}
+:root[data-theme="dark"] .hero-card{background-image:url(assets/img/atelier-affiche-sombre.jpg);background-blend-mode:lighten}
+:root[data-theme="dark"] .hero-film{mix-blend-mode:lighten}
 .hero-card{position:relative}
 .video-toggle{
   position:absolute;right:clamp(14px,2.4vw,26px);bottom:clamp(14px,2.4vw,26px);

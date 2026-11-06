@@ -119,19 +119,12 @@ if (!reduce) {
   drift();
 }
 
-// Home animation: a silent loop in the visitor's theme. It loads once the page has, stops off screen,
+// Home animation: a silent loop in the visitor's theme. It loads once the page has, rests while off screen,
 // and keeps its place when the theme changes. Reduced motion leaves the still image set in the CSS.
 const heroFilm = document.querySelector('.hero-film');
-const heroToggle = document.getElementById('hero-toggle');
-if (reduce) {
-  heroToggle.remove();
-} else {
+if (!reduce) {
   let heroSrc = '';
-  let heroHeld = false;
-  const syncHero = () => {
-    heroToggle.classList.toggle('paused', heroFilm.paused);
-    heroToggle.setAttribute('aria-label', heroFilm.paused ? "Lire l'animation" : "Mettre en pause l'animation");
-  };
+  const playHero = () => heroFilm.play().catch(() => {});
   const loadHero = () => {
     const src = `assets/img/atelier-${isDark() ? 'sombre' : 'clair'}.mp4`;
     if (src === heroSrc) return;
@@ -140,24 +133,16 @@ if (reduce) {
     heroFilm.classList.remove('pret');
     heroFilm.src = src;
     heroFilm.addEventListener('loadedmetadata', () => { heroFilm.currentTime = at; }, { once: true });
-    if (!heroHeld) heroFilm.play().catch(syncHero);
+    playHero();
   };
   heroFilm.addEventListener('canplay', () => heroFilm.classList.add('pret'));
-  heroFilm.addEventListener('play', syncHero);
-  heroFilm.addEventListener('pause', syncHero);
-  heroToggle.addEventListener('click', () => {
-    heroHeld = !heroFilm.paused;
-    if (heroHeld) heroFilm.pause(); else heroFilm.play();
-  });
   new MutationObserver(loadHero).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   darkScheme.addEventListener('change', loadHero);
   new IntersectionObserver(([e]) => {
     if (!heroSrc) return;
-    if (!e.isIntersecting) heroFilm.pause();
-    else if (!heroHeld) heroFilm.play().catch(syncHero);
+    if (e.isIntersecting) playHero(); else heroFilm.pause();
   }, { threshold: 0.2 }).observe(heroFilm);
   addEventListener('load', loadHero);
-  syncHero();
 }
 
 // Videos in the project windows: each loads and plays only while on screen, so the page stays light.
