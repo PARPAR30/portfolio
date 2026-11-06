@@ -126,16 +126,19 @@ if (!reduce) {
   let heroSrc = '';
   const playHero = () => heroFilm.play().catch(() => {});
   const loadHero = () => {
-    const src = `assets/img/atelier-${isDark() ? 'sombre' : 'clair'}.mp4`;
+    const src = `assets/img/atelier-${isDark() ? 'sombre' : 'clair'}.mp4?v=3`;
     if (src === heroSrc) return;
     const at = heroFilm.currentTime;
     heroSrc = src;
     heroFilm.classList.remove('pret');
+    heroCard.classList.remove('film-pret');
     heroFilm.src = src;
     heroFilm.addEventListener('loadedmetadata', () => { heroFilm.currentTime = at; }, { once: true });
     playHero();
   };
+  // The still image must leave once the film shows: the blend would otherwise mix the two
   heroFilm.addEventListener('canplay', () => heroFilm.classList.add('pret'));
+  heroFilm.addEventListener('transitionend', () => heroCard.classList.toggle('film-pret', heroFilm.classList.contains('pret')));
   new MutationObserver(loadHero).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   darkScheme.addEventListener('change', loadHero);
   new IntersectionObserver(([e]) => {
