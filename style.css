@@ -151,28 +151,37 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .hero-card{position:relative}
 
 /* Scène plein écran : la vidéo occupe toute la largeur, le texte se pose dans sa partie vide */
-.scene-piste,.scene-icone{display:none}
+.scene-cadre,.scene-icone{display:none}
 @media (min-width:1280px){
-  :root{--piste:70vh;--descente:1.2vw}
+  /* La scène entière tient dans la fenêtre : calée sur la hauteur si la largeur ne suffit pas (le cadre garde 4 % de vide en bas) */
+  :root{--large:min(100vw,calc(100vh / .6));--haut:calc(var(--large) * .625);--descente:max(calc(var(--large) * .012),calc(68px - var(--large) * .0444))}
   main{position:relative;z-index:1}
-  .scene-piste{display:block;position:absolute;top:0;left:0;width:100%;height:calc(62.5vw + var(--descente) + var(--piste));overflow:clip}
+  .scene-cadre{display:block;position:absolute;top:0;left:0;width:100%;height:calc(var(--haut) + var(--descente))}
   .hero-stage{
-    position:sticky;top:0;margin-top:var(--descente);width:100%;aspect-ratio:16/10;overflow:hidden;
+    position:absolute;top:var(--descente);right:0;width:var(--large);height:var(--haut);overflow:hidden;
     background:var(--bg) url(assets/img/atelier-accueil-clair.jpg?v=6) center/cover no-repeat;background-blend-mode:darken;
   }
-  .hero-stage video,.scene-plongee{position:absolute;inset:0;width:100%;height:100%;display:block;mix-blend-mode:darken}
+  .hero-stage video{position:absolute;inset:0;width:100%;height:100%;display:block;mix-blend-mode:darken}
   .scene-film{opacity:0;transition:opacity .5s linear}
   .scene-film.pret{opacity:1}
-  .scene-ouverture,.scene-plongee{opacity:0}
+  /* L'ouverture couvre toute la fenêtre, puis se pose exactement sur le cadre de la boucle ; ses bords s'estompent pendant le trajet */
+  .hero-stage.ouvre{overflow:visible}
+  .scene-ouverture{
+    opacity:0;transform-origin:100% 0;
+    transform:translateY(calc(var(--descente) * -1)) scale(var(--echelle,1));transition:transform 1.25s cubic-bezier(.4,0,.2,1);
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 98%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent);
+    mask-image:linear-gradient(to right,transparent,#000 8%,#000 98%,transparent),linear-gradient(to bottom,transparent,#000 5%,#000 95%,transparent);
+    -webkit-mask-composite:source-in;mask-composite:intersect;
+  }
   .hero-stage.ouvre .scene-ouverture{opacity:1}
-  .hero-stage.plonge .scene-film{transition:none}
+  .scene-ouverture.posee{transform:none}
   .hero-stage.film-pret,.film-ouverture .hero-stage{background-image:none!important}
   /* Le menu et le texte d'accueil partagent le bord de la scène ; les sections suivantes restent centrées */
   .top{max-width:none;padding-left:4.5vw;padding-right:4.5vw}
   /* En haut de page, le menu laisse voir la scène : son fond masquerait le drapeau du palais */
   .top.sur-scene{background:none;backdrop-filter:none;-webkit-backdrop-filter:none}
   .hero{
-    display:block;padding:clamp(12px,1.6vw,28px) 0 0;min-height:calc(62.5vw - 76px);margin-bottom:var(--piste);
+    display:block;padding:clamp(12px,1.6vw,28px) 0 0;min-height:calc(var(--haut) + var(--descente) - 76px);
     margin-left:calc(4.5vw - 32px - max(0px,(100vw - var(--page)) / 2));
   }
   /* Le texte tient dans l'angle laissé libre par la scène : au-dessus du pont, à gauche de la machine */
@@ -184,10 +193,10 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
   .hero-right{display:none}
   .film-ouverture .hero-left{opacity:0}
   .top{transition:opacity .5s linear,background-color .3s linear}
-  .top.efface,.film-ouverture .top{opacity:0;pointer-events:none}
+  .film-ouverture .top{opacity:0;pointer-events:none}
   /* La zone cliquable suit l'icône qui plane au-dessus de son socle */
   .scene-icone{
-    display:block;position:absolute;left:70.2vw;top:calc(62.5vw * .575 - 7vw + var(--descente));width:14vw;height:14vw;z-index:2;
+    display:block;position:absolute;right:calc(var(--large) * .158);top:calc(var(--haut) * .575 - var(--large) * .07 + var(--descente));width:calc(var(--large) * .14);height:calc(var(--large) * .14);z-index:2;
     border:0;border-radius:50%;background:none;padding:0;cursor:pointer;
   }
   .scene-icone[hidden]{display:none}
@@ -206,11 +215,11 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 }
 @media (min-width:1280px) and (prefers-color-scheme:dark){
   :root:not([data-theme="light"]) .hero-stage{background-image:url(assets/img/atelier-accueil-sombre.jpg?v=6);background-blend-mode:lighten}
-  :root:not([data-theme="light"]) .hero-stage video,:root:not([data-theme="light"]) .scene-plongee{mix-blend-mode:lighten}
+  :root:not([data-theme="light"]) .hero-stage video{mix-blend-mode:lighten}
 }
 @media (min-width:1280px){
   :root[data-theme="dark"] .hero-stage{background-image:url(assets/img/atelier-accueil-sombre.jpg?v=6);background-blend-mode:lighten}
-  :root[data-theme="dark"] .hero-stage video,:root[data-theme="dark"] .scene-plongee{mix-blend-mode:lighten}
+  :root[data-theme="dark"] .hero-stage video{mix-blend-mode:lighten}
 }
 .video-toggle{
   position:absolute;right:clamp(14px,2.4vw,26px);bottom:clamp(14px,2.4vw,26px);
@@ -506,7 +515,6 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
   .intro .w,.logos li,.top,.reveal-pop,.hero-name{animation:none;opacity:1;transform:none;filter:none}
   .goal,.hero-actions{animation:none;opacity:1}
   .tile-shot img,.xp-logo,.hero-card{transition:none;transform:none}
-  :root{--piste:0px}
   .modal[open],.viewer[open],.viewer-stage img.swap{animation:none}
   .gallery .shot img{transition:none}
   .btn__txt > span,.btn__ico .arrow{transition:none}

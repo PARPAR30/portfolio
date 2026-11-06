@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=28">
+  <link rel="stylesheet" href="style.css?v=30">
   <script>document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;const d=document.documentElement;if(innerWidth>=1280&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('ouverture-vue')&&!(navigator.connection&&navigator.connection.saveData)){d.classList.add('film-ouverture');setTimeout(()=>d.classList.remove('film-ouverture'),7000)}}catch(e){}</script>
 </head>
 <body>
@@ -47,12 +47,11 @@
   </nav>
 </header>
 
-<!-- Scène plein écran de l'accueil : décor seul, la liste des projets reste le chemin accessible -->
-<div class="scene-piste" aria-hidden="true">
+<!-- Scène de l'accueil : décor seul, la liste des projets reste le chemin accessible -->
+<div class="scene-cadre" aria-hidden="true">
   <div class="hero-stage">
     <video class="scene-film" muted loop playsinline preload="none"></video>
     <video class="scene-ouverture" muted playsinline preload="none"></video>
-    <canvas class="scene-plongee" width="1280" height="800"></canvas>
   </div>
 </div>
 <button class="scene-icone" type="button" tabindex="-1" aria-hidden="true" hidden></button>
@@ -674,6 +673,6 @@
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
 </dialog>
 
-<script src="script.js?v=19"></script>
+<script src="script.js?v=21"></script>
 </body>
 </html>
