@@ -130,10 +130,17 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .file{font-size:11px;font-weight:600;letter-spacing:.04em;padding:2px 6px;border-radius:6px;border:1px solid currentColor;opacity:.85}
 
 .hero-card{
-  background:var(--soft);border-radius:var(--tile-radius);
-  aspect-ratio:1.55;display:grid;place-items:center;padding:12%;
-  transition:transform .8s var(--ease);
+  background:#f0f0f0 url(assets/img/atelier-affiche-clair.jpg) center/cover;
+  border-radius:var(--tile-radius);overflow:hidden;
+  aspect-ratio:1.55;transition:transform .8s var(--ease);
 }
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .hero-card{background-color:#1b1b20;background-image:url(assets/img/atelier-affiche-sombre.jpg)}
+}
+:root[data-theme="dark"] .hero-card{background-color:#1b1b20;background-image:url(assets/img/atelier-affiche-sombre.jpg)}
+/* L'animation de l'accueil, posée sur son image fixe */
+.hero-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s linear}
+.hero-film.pret{opacity:1}
 .hero-card{position:relative}
 .video-toggle{
   position:absolute;right:clamp(14px,2.4vw,26px);bottom:clamp(14px,2.4vw,26px);

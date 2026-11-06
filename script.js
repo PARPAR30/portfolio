@@ -2,19 +2,15 @@ const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Theme toggle (the dot in the header)
 const root = document.documentElement;
+const darkScheme = matchMedia('(prefers-color-scheme: dark)');
+const isDark = () => (root.dataset.theme ? root.dataset.theme === 'dark' : darkScheme.matches);
 document.getElementById('theme').addEventListener('click', () => {
-  const dark = root.dataset.theme
-    ? root.dataset.theme === 'dark'
-    : matchMedia('(prefers-color-scheme: dark)').matches;
-  root.dataset.theme = dark ? 'light' : 'dark';
+  root.dataset.theme = isDark() ? 'light' : 'dark';
   try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
   syncThemeButton();
 });
 function syncThemeButton() {
-  const dark = root.dataset.theme
-    ? root.dataset.theme === 'dark'
-    : matchMedia('(prefers-color-scheme: dark)').matches;
-  document.getElementById('theme').setAttribute('aria-pressed', String(dark));
+  document.getElementById('theme').setAttribute('aria-pressed', String(isDark()));
 }
 syncThemeButton();
 
@@ -121,6 +117,47 @@ function drift() {
 if (!reduce) {
   addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(drift); } }, { passive: true });
   drift();
+}
+
+// Home animation: a silent loop in the visitor's theme. It loads once the page has, stops off screen,
+// and keeps its place when the theme changes. Reduced motion leaves the still image set in the CSS.
+const heroFilm = document.querySelector('.hero-film');
+const heroToggle = document.getElementById('hero-toggle');
+if (reduce) {
+  heroToggle.remove();
+} else {
+  let heroSrc = '';
+  let heroHeld = false;
+  const syncHero = () => {
+    heroToggle.classList.toggle('paused', heroFilm.paused);
+    heroToggle.setAttribute('aria-label', heroFilm.paused ? "Lire l'animation" : "Mettre en pause l'animation");
+  };
+  const loadHero = () => {
+    const src = `assets/img/atelier-${isDark() ? 'sombre' : 'clair'}.mp4`;
+    if (src === heroSrc) return;
+    const at = heroFilm.currentTime;
+    heroSrc = src;
+    heroFilm.classList.remove('pret');
+    heroFilm.src = src;
+    heroFilm.addEventListener('loadedmetadata', () => { heroFilm.currentTime = at; }, { once: true });
+    if (!heroHeld) heroFilm.play().catch(syncHero);
+  };
+  heroFilm.addEventListener('canplay', () => heroFilm.classList.add('pret'));
+  heroFilm.addEventListener('play', syncHero);
+  heroFilm.addEventListener('pause', syncHero);
+  heroToggle.addEventListener('click', () => {
+    heroHeld = !heroFilm.paused;
+    if (heroHeld) heroFilm.pause(); else heroFilm.play();
+  });
+  new MutationObserver(loadHero).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  darkScheme.addEventListener('change', loadHero);
+  new IntersectionObserver(([e]) => {
+    if (!heroSrc) return;
+    if (!e.isIntersecting) heroFilm.pause();
+    else if (!heroHeld) heroFilm.play().catch(syncHero);
+  }, { threshold: 0.2 }).observe(heroFilm);
+  addEventListener('load', loadHero);
+  syncHero();
 }
 
 // Videos in the project windows: each loads and plays only while on screen, so the page stays light.

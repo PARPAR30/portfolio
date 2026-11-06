@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=18">
+  <link rel="stylesheet" href="style.css?v=19">
   <script>document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
@@ -71,8 +71,13 @@
       </ul>
     </div>
     <div class="hero-right reveal">
-      <!-- Place réservée à la future animation de l'accueil -->
-      <div class="hero-card" aria-hidden="true"></div>
+      <div class="hero-card">
+        <video class="hero-film" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <button class="video-toggle" id="hero-toggle" aria-label="Mettre en pause l'animation">
+          <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg>
+          <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -663,6 +668,6 @@
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>icône</span></p>
 </dialog>
 
-<script src="script.js?v=10"></script>
+<script src="script.js?v=11"></script>
 </body>
 </html>
