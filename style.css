@@ -576,6 +576,47 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .back{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:15px;padding:10px 0}
 .back svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--ease-tt)}
 .back:hover svg{transform:translateX(-3px)}
+/* ---------- Pages de Plénière (présentation, confidentialité, assistance) ---------- */
+.pl-nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 20px}
+.pl-nav ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none}
+:is(.legal,.pl-page) .pl-nav ul a{display:block;font-size:14px;color:var(--muted);text-decoration:none;padding:8px 14px;border-radius:99px;transition:color .3s,background .3s}
+:is(.legal,.pl-page) .pl-nav ul a:hover{color:var(--text);background:var(--soft)}
+:is(.legal,.pl-page) .pl-nav ul a[aria-current="page"]{color:var(--text);background:var(--soft);font-weight:600}
+.legal .pl-sub{color:var(--muted);font-size:clamp(17px,1.8vw,20px);margin:-24px 0 32px;max-width:60ch}
+.legal ul{list-style:none;display:grid;gap:6px;color:var(--muted);margin:4px 0 10px;max-width:66ch}
+.legal li{position:relative;padding-left:16px}
+.legal li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.legal dl{display:grid;gap:0;max-width:66ch}
+.legal dt{font-weight:600;margin-top:16px}
+.legal dt:first-child{margin-top:4px}
+.legal dd{color:var(--muted);margin-top:4px}
+.legal .pl-date{font-size:14px;margin-top:10px}
+.pl-foot{border-top:1px solid var(--line);padding-top:22px;margin-top:8px}
+.pl-foot .copy{margin-top:0}
+/* Présentation */
+.pl-page{max-width:980px;padding-top:clamp(32px,6vw,64px);padding-bottom:80px}
+.pl-head{display:flex;gap:20px;align-items:center;margin:28px 0 22px}
+.pl-head img{width:88px;height:88px;border-radius:22px;flex:none}
+.pl-head h1{font-size:clamp(38px,5vw,56px);font-weight:700;line-height:1.02;letter-spacing:-.035em}
+.pl-head p{font-size:clamp(17px,1.8vw,21px);color:var(--accent);font-weight:600;margin-top:4px}
+.pl-soon{display:inline-flex;align-items:center;gap:10px;font-size:15px;padding:10px 16px;border-radius:99px;background:var(--bar);margin-bottom:22px}
+.pl-soon::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);flex:none}
+.pl-intro{font-size:clamp(18px,1.8vw,21px);line-height:1.45;letter-spacing:-.01em;max-width:62ch;margin-bottom:12px;text-wrap:pretty}
+.pl-officiel{color:var(--muted);margin-bottom:28px}
+.pl-page .gallery{margin:8px 0 12px}
+.pl-page .gallery img:first-child{grid-column:1/-1}
+.pl-page .note{margin-bottom:32px}
+.pl-page .cols{margin-bottom:20px}
+.pl-page .proof{margin-bottom:20px}
+.pl-page .proof ul{list-style:none;display:grid;gap:6px;color:var(--muted);font-size:15px}
+.pl-page .proof li{position:relative;padding-left:16px}
+.pl-page .proof li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.pl-liens{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 40px}
+@media (max-width:640px){
+  .pl-head img{width:64px;height:64px;border-radius:16px}
+  .pl-page .gallery img:first-child{grid-column:auto}
+}
+
 .copy a{text-decoration:underline;text-underline-offset:3px}
 .copy a:hover{color:var(--text)}
 
