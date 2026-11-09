@@ -583,9 +583,9 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 :is(.legal,.pl-page) .pl-nav ul a:hover{color:var(--text);background:var(--soft)}
 :is(.legal,.pl-page) .pl-nav ul a[aria-current="page"]{color:var(--text);background:var(--soft);font-weight:600}
 .legal .pl-sub{color:var(--muted);font-size:clamp(17px,1.8vw,20px);margin:-24px 0 32px;max-width:60ch}
-.legal ul{list-style:none;display:grid;gap:6px;color:var(--muted);margin:4px 0 10px;max-width:66ch}
-.legal li{position:relative;padding-left:16px}
-.legal li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.legal section ul{list-style:none;display:grid;gap:6px;color:var(--muted);margin:4px 0 10px;max-width:66ch}
+.legal section li{position:relative;padding-left:16px}
+.legal section li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .legal dl{display:grid;gap:0;max-width:66ch}
 .legal dt{font-weight:600;margin-top:16px}
 .legal dt:first-child{margin-top:4px}
@@ -604,6 +604,7 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .pl-intro{font-size:clamp(18px,1.8vw,21px);line-height:1.45;letter-spacing:-.01em;max-width:62ch;margin-bottom:12px;text-wrap:pretty}
 .pl-officiel{color:var(--muted);margin-bottom:28px}
 .pl-page .gallery{margin:8px 0 12px}
+.pl-page .gallery img{height:auto;aspect-ratio:16/10;object-fit:cover}
 .pl-page .gallery img:first-child{grid-column:1/-1}
 .pl-page .note{margin-bottom:32px}
 .pl-page .cols{margin-bottom:20px}
@@ -613,6 +614,9 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .pl-page .proof li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .pl-liens{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 40px}
 @media (max-width:640px){
+  .pl-nav{flex-direction:column;align-items:flex-start}
+  .pl-nav ul{margin-left:-10px;gap:2px}
+  :is(.legal,.pl-page) .pl-nav ul a{padding:8px 10px}
   .pl-head img{width:64px;height:64px;border-radius:16px}
   .pl-page .gallery img:first-child{grid-column:auto}
 }
