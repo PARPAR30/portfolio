@@ -456,7 +456,9 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 .gallery img{border-radius:14px;border:1px solid var(--line);width:100%}
 /* Captures d'iPhone : des colonnes étroites, centrées, à la taille d'un téléphone */
 .gallery-label{font-size:15px;margin:6px 0 10px}
-.gallery.phones{grid-template-columns:repeat(auto-fit,minmax(120px,150px));justify-content:center}
+.gallery.phones{display:flex;justify-content:center}
+.gallery.phones > *{flex:0 1 150px;min-width:0}
+@media (max-width:560px){.gallery.phones{flex-wrap:wrap}.gallery.phones > *{flex-basis:calc((100% - 28px) / 3)}}
 .gallery.phones img,.gallery.phones .shot{border-radius:clamp(14px,2vw,20px)}
 .gallery .shot{display:block;position:relative;border-radius:14px;cursor:zoom-in}
 .gallery .shot img{transition:transform .6s var(--ease),box-shadow .6s var(--ease)}

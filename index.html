@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=35">
+  <link rel="stylesheet" href="style.css?v=36">
   <script>document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;const d=document.documentElement;if(innerWidth>=1280&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('ouverture-vue')&&!(navigator.connection&&navigator.connection.saveData)){d.classList.add('film-ouverture');setTimeout(()=>d.classList.remove('film-ouverture'),7000)}}catch(e){}</script>
 </head>
 <body>
@@ -582,7 +582,11 @@
   </div>
   <p class="note">Vidéo et captures du Mac réalisées le 10 novembre 2026, captures de l'iPhone le 12 novembre 2026 dans le simulateur, à partir des données publiques de l'Assemblée nationale (Licence ouverte). Outil indépendant, sans lien avec l'Assemblée nationale.</p>
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>données publiques</span><span>vidéo</span></p>
-  <a class="pill-link" href="pleniere/">Présentation, confidentialité et assistance <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+  <div class="downloads">
+    <a class="pill-link solid" href="https://github.com/PARPAR30/portfolio/releases/download/applications/Pleniere-1.0.dmg" download>Télécharger pour Mac <span class="file">DMG</span></a>
+    <a class="pill-link" href="pleniere/">Présentation, confidentialité et assistance <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+  </div>
+  <p class="note">Version 1.0, 109 Mo, macOS 15 ou plus récent, Mac à puce Apple (M1 ou plus récent), signée et vérifiée par Apple : elle s'ouvre sans avertissement. Au premier lancement, elle télécharge seule les données de l'Assemblée (environ 1,5 Go d'espace libre). La version pour iPhone et iPad n'est pas encore publiée.</p>
 </dialog>
 
 <dialog id="m-sillage" class="modal" aria-labelledby="m-sillage-title">
@@ -623,6 +627,10 @@
   </div>
   <p class="note">Vidéo et captures réalisées avec les données d'exemple de l'application : les notes, les comptes, les mesures de santé et les voyages montrés sont fictifs.</p>
   <p class="tags"><span>conception</span><span>développement</span><span>design natif</span><span>vidéo</span></p>
+  <div class="downloads">
+    <a class="pill-link solid" href="https://github.com/PARPAR30/portfolio/releases/download/applications/Sillage-1.0.dmg" download>Télécharger pour Mac <span class="file">DMG</span></a>
+  </div>
+  <p class="note">Version 1.0, 24 Mo, macOS 26 ou plus récent, Mac Apple ou Intel, signée et vérifiée par Apple : elle s'ouvre sans avertissement. La banque, Whoop et les trains se branchent avec vos propres clés, gratuites, enregistrées dans le trousseau du Mac.</p>
 </dialog>
 
 <dialog id="m-pince" class="modal" aria-labelledby="m-pince-title">
