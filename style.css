@@ -426,7 +426,7 @@ main{max-width:var(--page);margin:0 auto;padding:0 clamp(16px,3vw,32px)}
 }
 .modal::backdrop{background:rgba(10,10,20,.45);backdrop-filter:blur(6px)}
 .modal[open]{animation:modal .6s var(--ease)}
-.modal .close{position:sticky;top:0;float:right;width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;transition:transform .4s var(--ease)}
+.modal .close{position:sticky;top:0;z-index:20;float:right;width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;transition:transform .4s var(--ease)}
 .modal .close svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
 .modal .close:hover{transform:rotate(90deg)}
 .modal-head{display:flex;gap:18px;align-items:center;margin-bottom:22px}
